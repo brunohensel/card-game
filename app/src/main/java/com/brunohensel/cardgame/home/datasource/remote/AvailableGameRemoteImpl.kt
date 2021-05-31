@@ -1,6 +1,6 @@
 package com.brunohensel.cardgame.home.datasource.remote
 
-import com.brunohensel.cardgame.Either
+import com.brunohensel.core.Either
 import com.brunohensel.cardgame.home.domain.AvailableGameRemote
 import com.brunohensel.cardgame.home.domain.module.AvailableGame
 import kotlinx.coroutines.delay

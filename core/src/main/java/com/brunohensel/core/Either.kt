@@ -1,4 +1,4 @@
-package com.brunohensel.cardgame
+package com.brunohensel.core
 
 /**
  * Encoding success and failure conditions.
