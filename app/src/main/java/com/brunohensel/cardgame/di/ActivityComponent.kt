@@ -1,6 +1,6 @@
 package com.brunohensel.cardgame.di
 
-import com.brunohensel.cardgame.home.presentation.HomeActivity
+import com.brunohensel.cardgame.home.presentation.ui.HomeActivity
 import dagger.Subcomponent
 
 @Subcomponent
