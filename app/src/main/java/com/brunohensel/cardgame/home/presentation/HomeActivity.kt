@@ -1,11 +1,12 @@
-package com.brunohensel.cardgame
+package com.brunohensel.cardgame.home.presentation
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.brunohensel.cardgame.R
 
 class HomeActivity : AppCompatActivity() {
   override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
-    setContentView(R.layout.activity_main)
+    setContentView(R.layout.activity_home)
   }
 }
