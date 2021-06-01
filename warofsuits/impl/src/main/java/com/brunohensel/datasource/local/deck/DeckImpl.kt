@@ -1,6 +1,7 @@
 package com.brunohensel.datasource.local.deck
 
 import com.brunohensel.core.annotations.ActivityScope
+import com.brunohensel.core.annotations.ApplicationScope
 import com.brunohensel.core.factory.deck.CardSetType
 import com.brunohensel.core.factory.deck.DeckCreator
 import javax.inject.Inject
@@ -10,7 +11,7 @@ import javax.inject.Inject
  * It composes the [DeckCreator] in order to access the factory method createDeckOfCards, and passes
  * the type of a card as argument to it to get a deck of a card from this type.
  */
-@ActivityScope
+@ApplicationScope
 internal class DeckImpl @Inject constructor(): Deck {
     private val factory = DeckCreator()
     /**

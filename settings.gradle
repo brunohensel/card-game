@@ -1,3 +1,4 @@
+include ':warofsuits:presentation'
 include ':warofsuits:impl'
 include ':warofsuits:public'
 include ':test'

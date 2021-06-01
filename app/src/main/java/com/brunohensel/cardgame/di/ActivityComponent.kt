@@ -4,7 +4,7 @@ import com.brunohensel.cardgame.home.presentation.ui.HomeActivity
 import com.brunohensel.core.annotations.ActivityScope
 import dagger.Subcomponent
 
-@Subcomponent(modules = [ActivityModule::class])
+@Subcomponent
 @ActivityScope
 interface ActivityComponent {
     // Factory that is used to create instances of this subcomponent

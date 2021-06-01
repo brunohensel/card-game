@@ -22,7 +22,6 @@ import javax.inject.Inject
  *
  * @param [remote] is the contract with the remote data source, which will fetch us some data.
  */
-@ActivityScope
 class HomeViewModel @Inject constructor(
     private val remote: AvailableGameRemote
 ) : BaseStateViewModel<HomeState, HomeEvents>(initialState = HomeState(), initialEvent = Fetch) {

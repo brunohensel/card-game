@@ -1,5 +1,6 @@
 package com.brunohensel.cardgame.home.presentation.ui
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.widget.Toast
@@ -15,6 +16,7 @@ import com.brunohensel.cardgame.home.domain.state.HomeState
 import com.brunohensel.cardgame.home.domain.state.HomeSyncState
 import com.brunohensel.cardgame.home.presentation.HomeViewModel
 import com.brunohensel.core.utils.collectIn
+import com.brunohensel.presentation.WarOfSuitsActivity
 import kotlinx.coroutines.flow.onEach
 import javax.inject.Inject
 
@@ -63,7 +65,7 @@ class HomeActivity : AppCompatActivity() {
 
     private fun onClick(gameType: GameType) {
         when (gameType) {
-            //GameType.WAR_OF_SUITS -> startActivity(Intent(this, WarOfSuitsActivity::class.java))
+            GameType.WAR_OF_SUITS -> startActivity(Intent(this, WarOfSuitsActivity::class.java))
             GameType.POKER -> Toast.makeText(this, "Open Poker", Toast.LENGTH_SHORT).show()
             GameType.BLACKJACK -> Toast.makeText(this, "Open Blackjack", Toast.LENGTH_SHORT).show()
         }

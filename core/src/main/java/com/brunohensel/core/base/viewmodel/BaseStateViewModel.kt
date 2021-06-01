@@ -19,10 +19,10 @@ import kotlinx.coroutines.launch
  * @param [initialState] is the first state when the view is shown.
  */
 @OptIn(FlowPreview::class)
-abstract class BaseStateViewModel<State, Events>(initialState: State, initialEvent: Events) : ViewModel() {
+abstract class BaseStateViewModel<State, Events>(initialState: State, private val initialEvent: Events) : ViewModel() {
 
     //produce a flow from events
-    private val events = MutableStateFlow(initialEvent)
+    private val events = MutableSharedFlow<Events>()
 
     /**
      * This property holds a chain of flow of [State] and will be collected in the UI every time a
@@ -42,6 +42,7 @@ abstract class BaseStateViewModel<State, Events>(initialState: State, initialEve
 
     private fun toState(): Flow<State> {
         return events
+            .onStart { emit(initialEvent) }
             .map { process(it) }
             .flattenMerge()
     }

@@ -5,6 +5,7 @@ import androidx.lifecycle.ViewModelProvider
 import com.brunohensel.cardgame.home.datasource.remote.AvailableGameRemoteImpl
 import com.brunohensel.cardgame.home.domain.AvailableGameRemote
 import com.brunohensel.cardgame.home.presentation.HomeViewModel
+import com.brunohensel.core.annotations.ActivityScope
 import com.brunohensel.core.base.viewmodel.BaseViewModelFactory
 import com.brunohensel.core.base.viewmodel.ViewModelKey
 import dagger.Binds

@@ -28,6 +28,6 @@ abstract class WarOfSuitsImplWireModule {
     internal abstract fun bindsSuitsProvider(impl: SuitsProviderImpl): SuitsProvider
 
     @Binds
-    @Singleton
+    @ApplicationScope
     internal abstract fun bindsDeck(impl: DeckImpl): Deck
 }
