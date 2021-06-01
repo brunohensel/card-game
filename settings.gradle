@@ -1,4 +1,5 @@
+include ':warofsuits:public'
 include ':test'
 include ':core'
-include ':app'
+include ':app', ':warofsuits'
 rootProject.name = "Card Game"
