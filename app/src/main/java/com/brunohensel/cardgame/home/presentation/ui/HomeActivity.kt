@@ -1,6 +1,7 @@
 package com.brunohensel.cardgame.home.presentation.ui
 
 import android.os.Bundle
+import android.util.Log
 import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
@@ -44,6 +45,7 @@ class HomeActivity : AppCompatActivity() {
     }
 
     private fun renderState(state: HomeState) {
+        Log.d("STATES", "${state.syncState}")
         when (state.syncState) {
             HomeSyncState.Content -> homeAdapter.submitList(state.availableGames)
             HomeSyncState.Idle -> {

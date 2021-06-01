@@ -3,6 +3,7 @@ package com.brunohensel.cardgame.home.presentation
 import android.util.Log
 import com.brunohensel.cardgame.home.domain.AvailableGameRemote
 import com.brunohensel.cardgame.home.domain.HomeEvents
+import com.brunohensel.cardgame.home.domain.HomeEvents.Fetch
 import com.brunohensel.cardgame.home.domain.state.HomeState
 import com.brunohensel.cardgame.home.domain.state.HomeSyncState.Content
 import com.brunohensel.cardgame.home.domain.state.HomeSyncState.Message
@@ -22,11 +23,11 @@ import javax.inject.Inject
 @ActivityScope
 class HomeViewModel @Inject constructor(
     private val remote: AvailableGameRemote
-) : BaseStateViewModel<HomeState, HomeEvents>(initialState = HomeState(), initialEvent = HomeEvents.Fetch) {
+) : BaseStateViewModel<HomeState, HomeEvents>(initialState = HomeState(), initialEvent = Fetch) {
 
     override fun process(event: HomeEvents): Flow<HomeState> {
         return when (event) {
-            HomeEvents.Fetch -> fetchRemoteAvailableGame()
+            Fetch -> fetchRemoteAvailableGame()
         }
     }
 

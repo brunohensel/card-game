@@ -42,7 +42,6 @@ abstract class BaseStateViewModel<State, Events>(initialState: State, initialEve
 
     private fun toState(): Flow<State> {
         return events
-            .onEach { Log.d("EVENTS", "Event: $it") }
             .map { process(it) }
             .flattenMerge()
     }
