@@ -12,8 +12,11 @@ package com.brunohensel.core
  * Success or Failure. By convention the [Right] constructor is reserved for the success case,
  * and [Left] is used for failure.
  *
- * It acts like Result<T> from Kotlin standard library. This is only available from version 1.5.0
+ * It acts like Result<T> from Kotlin standard library, which is only available from version 1.5.0
  * onwards without to have to do any tricks.
+ *
+ * I decided to use this approach as a way to test some concepts that I read in the "Functional
+ * Programming in Kotlin" book.
  */
 sealed class Either<out E, out A> {
     data class Left<out E>(val value: E) : Either<E, Nothing>()

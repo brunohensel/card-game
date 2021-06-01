@@ -1,6 +1,39 @@
 package com.brunohensel.cardgame.home.presentation
 
-import androidx.lifecycle.ViewModel
+import android.util.Log
+import com.brunohensel.cardgame.home.domain.AvailableGameRemote
+import com.brunohensel.cardgame.home.domain.HomeEvents
+import com.brunohensel.cardgame.home.domain.state.HomeState
+import com.brunohensel.cardgame.home.domain.state.HomeSyncState.Content
+import com.brunohensel.cardgame.home.domain.state.HomeSyncState.Message
+import com.brunohensel.core.Either
+import com.brunohensel.core.annotations.ActivityScope
+import com.brunohensel.core.base.viewmodel.BaseStateViewModel
+import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.flow
+import javax.inject.Inject
 
-class HomeViewModel : ViewModel() {
+/**
+ * Class that extends the [BaseStateViewModel] and is responsible to process the [HomeEvents], map
+ * them into [HomeState].
+ *
+ * @param [remote] is the contract with the remote data source, which will fetch us some data.
+ */
+@ActivityScope
+class HomeViewModel @Inject constructor(
+    private val remote: AvailableGameRemote
+) : BaseStateViewModel<HomeState, HomeEvents>(initialState = HomeState(), initialEvent = HomeEvents.Fetch) {
+
+    override fun process(event: HomeEvents): Flow<HomeState> {
+        return when (event) {
+            HomeEvents.Fetch -> fetchRemoteAvailableGame()
+        }
+    }
+
+    private fun fetchRemoteAvailableGame(): Flow<HomeState> = flow {
+        when (val result = remote.fetchAvailableGames()) {
+            is Either.Left  -> emit(HomeState(failure = result.value, syncState = Message))
+            is Either.Right -> emit(HomeState(availableGames = result.value, syncState = Content))
+        }
+    }
 }

@@ -1,6 +1,11 @@
 package com.brunohensel.cardgame.di
 
-import javax.inject.Singleton
+import com.brunohensel.core.annotations.ApplicationScope
+import dagger.Component
 
-@Singleton
-interface ApplicationComponent
+@ApplicationScope
+@Component(modules = [ApplicationModule::class])
+interface ApplicationComponent {
+
+    fun activityComponent(): ActivityComponent.Factory
+}

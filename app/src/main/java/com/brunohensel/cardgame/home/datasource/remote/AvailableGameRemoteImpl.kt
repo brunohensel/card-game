@@ -1,17 +1,17 @@
 package com.brunohensel.cardgame.home.datasource.remote
 
-import com.brunohensel.core.Either
 import com.brunohensel.cardgame.home.domain.AvailableGameRemote
 import com.brunohensel.cardgame.home.domain.module.AvailableGame
+import com.brunohensel.core.Either
+import dagger.Reusable
 import kotlinx.coroutines.delay
 import javax.inject.Inject
-import javax.inject.Singleton
 
 /**
  * Class responsible to "fetch" or simulating a fetch request to an remote api that returns as a
  * response the AvailableGame object or an exception.
  */
-@Singleton
+@Reusable
 class AvailableGameRemoteImpl @Inject constructor(): AvailableGameRemote {
 
     override suspend fun fetchAvailableGames(): Either<Throwable, List<AvailableGame>> {
