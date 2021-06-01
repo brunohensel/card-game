@@ -49,8 +49,8 @@ class HomeActivity : AppCompatActivity() {
         handleLoadingAnimation(state.isLoading)
         when (state.syncState) {
             HomeSyncState.Content -> homeAdapter.submitList(state.availableGames)
-            HomeSyncState.Idle -> { }
-            HomeSyncState.Message -> { }
+            HomeSyncState.Idle -> { /* no action is needed */ }
+            HomeSyncState.Message -> { /* handle error state */ }
         }
     }
 
