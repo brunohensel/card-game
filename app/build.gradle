@@ -41,6 +41,7 @@ android {
 dependencies {
   implementation project("::core")
   implementation project("::warofsuits:public")
+  implementation project("::warofsuits:impl")
 
   //Kotlin and coroutines
   implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"

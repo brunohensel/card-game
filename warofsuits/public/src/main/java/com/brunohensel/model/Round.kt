@@ -6,5 +6,5 @@ package com.brunohensel.model
  */
 sealed class Round {
     data class RoundWinner(val winner: Player, val players: Pair<Player, Player>, val hand: Hand): Round()
-    data class Finished(val winner: Player) : Round()
+    data class Finished(val winner: Player? = null, val isTied: Boolean = false) : Round()
 }

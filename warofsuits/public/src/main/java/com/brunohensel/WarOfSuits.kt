@@ -7,7 +7,7 @@ import com.brunohensel.model.Round
  * Public interface that represents the core of the "war of suits" game. It exposes public methods,
  * that will be used to play the game.
  */
-interface Game {
+interface WarOfSuits {
     /**
      * Returns a Pair with 2 players that are about to start the round.
      */
