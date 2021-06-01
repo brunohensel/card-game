@@ -1,3 +1,4 @@
 <resources>
   <string name="app_name">Card Game</string>
+    <string name="home_title">Choose your favorite game to play</string>
 </resources>

@@ -7,7 +7,6 @@ package com.brunohensel.cardgame.home.domain.state
  */
 sealed class HomeSyncState{
     object Idle : HomeSyncState()
-    object Loading : HomeSyncState()
     object Message : HomeSyncState()
     object Content : HomeSyncState()
 }

@@ -5,6 +5,7 @@ import android.util.Log
 import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.isVisible
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.GridLayoutManager
 import com.brunohensel.cardgame.application.component
@@ -45,15 +46,18 @@ class HomeActivity : AppCompatActivity() {
     }
 
     private fun renderState(state: HomeState) {
-        Log.d("STATES", "${state.syncState}")
+        handleLoadingAnimation(state.isLoading)
         when (state.syncState) {
             HomeSyncState.Content -> homeAdapter.submitList(state.availableGames)
-            HomeSyncState.Idle -> {
-            }
-            HomeSyncState.Loading -> {
-            }
-            HomeSyncState.Message -> {
-            }
+            HomeSyncState.Idle -> { }
+            HomeSyncState.Message -> { }
+        }
+    }
+
+    private fun handleLoadingAnimation(shouldShow: Boolean) {
+        with(binding.lottieLoading) {
+            isVisible = shouldShow
+            if (shouldShow) playAnimation() else cancelAnimation()
         }
     }
 
