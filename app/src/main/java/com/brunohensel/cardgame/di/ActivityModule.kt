@@ -22,7 +22,4 @@ abstract class ActivityModule {
 
     @Binds
     abstract fun bindRemoteDataSource(impl: AvailableGameRemoteImpl): AvailableGameRemote
-
-    @Binds
-    abstract fun bindBaseViewModelFactory(factory: BaseViewModelFactory): ViewModelProvider.Factory
 }

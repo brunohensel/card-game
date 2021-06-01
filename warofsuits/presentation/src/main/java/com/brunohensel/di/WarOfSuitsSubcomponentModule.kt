@@ -7,7 +7,7 @@ import dagger.Binds
 import dagger.Module
 import dagger.multibindings.IntoMap
 
-@Module(subcomponents = [WarOfSuitsComponent::class])
+@Module
 abstract class WarOfSuitsSubcomponentModule{
     @Binds
     @IntoMap

@@ -8,7 +8,7 @@ import com.brunohensel.di.WarOfSuitsSubcomponentModule
 import dagger.Component
 
 @ApplicationScope
-@Component(modules = [ApplicationModule::class, WarOfSuitsImplWireModule::class, WarOfSuitsPlayerModule::class, WarOfSuitsSubcomponentModule::class, ActivityModule::class])
+@Component(modules = [ApplicationModule::class, WarOfSuitsImplWireModule::class, WarOfSuitsPlayerModule::class])
 interface ApplicationComponent {
 
     fun warOfSuitsComponent(): WarOfSuitsComponent.Factory

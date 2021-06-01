@@ -1,15 +1,13 @@
 package com.brunohensel.cardgame.di
 
-import android.app.Application
-import android.content.Context
+import androidx.lifecycle.ViewModelProvider
+import com.brunohensel.core.base.viewmodel.BaseViewModelFactory
+import dagger.Binds
 import dagger.Module
-import dagger.Provides
-import javax.inject.Singleton
 
 @Module
-class ApplicationModule(private val app: Application) {
+abstract class ApplicationModule {
 
-    @Provides
-    @Singleton
-    fun provideContext(): Context = app
+    @Binds
+    abstract fun bindBaseViewModelFactory(factory: BaseViewModelFactory): ViewModelProvider.Factory
 }

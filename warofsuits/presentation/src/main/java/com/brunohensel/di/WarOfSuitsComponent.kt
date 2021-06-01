@@ -5,7 +5,7 @@ import com.brunohensel.presentation.WarOfSuitsActivity
 import dagger.Subcomponent
 
 @ActivityScope
-@Subcomponent
+@Subcomponent(modules = [WarOfSuitsSubcomponentModule::class])
 interface WarOfSuitsComponent {
     // Factory that is used to create instances of this subcomponent
     @Subcomponent.Factory
