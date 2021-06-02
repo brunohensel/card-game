@@ -1,6 +1,7 @@
 package com.brunohensel.presentation
 
 import com.brunohensel.domain.WarOfSuitsEvents
+import com.brunohensel.domain.WarOfSuitsSingleEvents
 import com.brunohensel.domain.state.WarOfSuitsState
 import com.brunohensel.domain.state.WarOfSuitsSyncState
 import com.brunohensel.domain.state.WarOfSuitsSyncState.Started
@@ -17,7 +18,9 @@ internal class WarOfSuitsViewModelTest : BaseUnitTest<WarOfSuitsViewModel>() {
     fun `emit WarOfSuitsState when start a new game, sync state should be Started`() =
         testCoroutine {
             val result = tested.state.test(this)
-            val expected = WarOfSuitsState(players = Pair(fakeGame.playerOne, fakeGame.playerTwo),syncState = Started)
+            val expected = WarOfSuitsState(
+                players = Pair(fakeGame.playerOne, fakeGame.playerTwo),
+                syncState = Started)
             result.assertFirst(expected).finish()
         }
 
@@ -73,5 +76,16 @@ internal class WarOfSuitsViewModelTest : BaseUnitTest<WarOfSuitsViewModel>() {
         tested.dispatch(WarOfSuitsEvents.Restart)
         val expected = WarOfSuitsState(Pair(fakeGame.playerOne, fakeGame.playerTwo), syncState = WarOfSuitsSyncState.Restarted)
         result.assertLast(expected).finish()
+    }
+
+    @Test
+    fun `emit WarOfSuitsSingleEvents for fetch History`() = testCoroutine {
+        val resultOneShot = tested.oneShotEvent.test(this)
+        val resultState = tested.state.test(this)
+        tested.dispatch(WarOfSuitsEvents.History)
+        val expectedState =  WarOfSuitsState(Pair(fakeGame.playerOne, fakeGame.playerTwo), syncState = WarOfSuitsSyncState.Idle)
+        val expectedSingleEvent = WarOfSuitsSingleEvents.History(emptyList())
+        resultState.assertLast(expectedState).finish()
+        resultOneShot.assertLast(expectedSingleEvent).finish()
     }
 }

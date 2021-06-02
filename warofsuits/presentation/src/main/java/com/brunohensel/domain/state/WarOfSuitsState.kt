@@ -7,6 +7,7 @@ data class WarOfSuitsState(
     val players: Pair<Player, Player>? = null,
     val hand: Hand? = null,
     val rounds: Int = 0,
+    val history: List<Hand> = emptyList(),
     val syncState: WarOfSuitsSyncState = WarOfSuitsSyncState.Idle
 )
 

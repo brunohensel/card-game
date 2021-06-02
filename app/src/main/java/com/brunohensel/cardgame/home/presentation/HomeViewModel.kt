@@ -1,11 +1,9 @@
 package com.brunohensel.cardgame.home.presentation
 
-import android.util.Log
 import com.brunohensel.cardgame.home.domain.AvailableGameRemote
 import com.brunohensel.cardgame.home.domain.HomeEvents
 import com.brunohensel.cardgame.home.domain.HomeEvents.Fetch
 import com.brunohensel.cardgame.home.domain.state.HomeState
-import com.brunohensel.cardgame.home.domain.state.HomeSyncState
 import com.brunohensel.cardgame.home.domain.state.HomeSyncState.Content
 import com.brunohensel.cardgame.home.domain.state.HomeSyncState.Message
 import com.brunohensel.core.Either
@@ -22,6 +20,7 @@ import javax.inject.Inject
  *
  * @param [remote] is the contract with the remote data source, which will fetch us some data.
  */
+@ActivityScope
 class HomeViewModel @Inject constructor(
     private val remote: AvailableGameRemote
 ) : BaseStateViewModel<HomeState, HomeEvents>(initialState = HomeState(), initialEvent = Fetch) {

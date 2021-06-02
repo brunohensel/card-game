@@ -12,8 +12,8 @@ class FakeWarOfSuitsImpl : WarOfSuits {
 
     val playerOne = Player(name = "Player one")
     val playerTwo = Player(name = "Player two")
-    val handOne = Hand(playerOne, playerTwo, Pair(Card(Ranks.KING, Suits.HEARTS), Card(Ranks.THREE, Suits.CLUBS)),10, 2)
-    val handTwo = Hand(playerTwo, playerOne, Pair(Card(Ranks.NINE, Suits.HEARTS), Card(Ranks.EIGHT, Suits.DIAMONDS)),2, 10)
+    val handOne = Hand(playerOne.name, playerTwo.name, Pair(Card(Ranks.KING, Suits.HEARTS), Card(Ranks.THREE, Suits.CLUBS)),10, 2)
+    val handTwo = Hand(playerTwo.name, playerOne.name, Pair(Card(Ranks.NINE, Suits.HEARTS), Card(Ranks.EIGHT, Suits.DIAMONDS)),2, 10)
 
     var shouldOneWin = false
     var shouldEndGame = false

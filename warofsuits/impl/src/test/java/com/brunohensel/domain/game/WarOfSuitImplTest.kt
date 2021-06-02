@@ -64,17 +64,17 @@ internal class WarOfSuitImplTest : BaseUnitTest<WarOfSuitImpl>(){
         val game: WarOfSuits = WarOfSuitImpl(FakeDeck(), playerOne, playerTwo, WarOfSuitsRules(fakeSuitsProvider))
         game.start()
         val resultRoundOne = game.playRound()
-        assert(resultRoundOne is Round.Played && resultRoundOne.hand.winner == playerTwo )
+        assert(resultRoundOne is Round.Played && resultRoundOne.hand.winner == playerTwo.name )
 
         val resultRoundTwo = game.playRound()
-        assert(resultRoundTwo is Round.Played && resultRoundTwo.hand.winner == playerOne)
+        assert(resultRoundTwo is Round.Played && resultRoundTwo.hand.winner == playerOne.name)
 
         val resultRoundThree = game.playRound()
-        assert(resultRoundThree is Round.Played && resultRoundThree.hand.winner == playerTwo)
+        assert(resultRoundThree is Round.Played && resultRoundThree.hand.winner == playerTwo.name)
 
         //In case that both cards have equal value, the winner card is decided based on their suits
         val resultRoundFour = game.playRound()
-        assert(resultRoundFour is Round.Played && resultRoundFour.hand.winner == playerTwo)
+        assert(resultRoundFour is Round.Played && resultRoundFour.hand.winner == playerTwo.name)
     }
 
     @Test

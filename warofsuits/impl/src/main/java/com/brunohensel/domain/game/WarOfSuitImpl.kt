@@ -64,8 +64,8 @@ internal class WarOfSuitImpl @Inject constructor(
                 Round.Played(
                     playerOne.regularPile.cards.size,
                     Hand(
-                        winner = playerOne,
-                        loser = playerTwo,
+                        winner = playerOne.name,
+                        loser = playerTwo.name,
                         playedHands = Pair(cardPlayerOne, cardPlayerTwo),
                         playerOneScore = playerOne.discardPile.cards.size / 2,
                         playerTwoScore = playerTwo.discardPile.cards.size / 2
@@ -76,8 +76,8 @@ internal class WarOfSuitImpl @Inject constructor(
                 Round.Played(
                     playerOne.regularPile.cards.size,
                     Hand(
-                        winner = playerTwo,
-                        loser = playerOne,
+                        winner = playerTwo.name,
+                        loser = playerOne.name,
                         playedHands = Pair(cardPlayerOne, cardPlayerTwo),
                         playerOneScore = playerOne.discardPile.cards.size / 2,
                         playerTwoScore = playerTwo.discardPile.cards.size / 2

@@ -10,8 +10,8 @@ typealias PlayerOne = Card
 typealias PlayerTwo = Card
 
 data class Hand(
-    val winner: Player?,
-    val loser: Player,
+    val winner: String?,
+    val loser: String,
     val playedHands: Pair<PlayerOne, PlayerTwo>,
     val playerOneScore: Int,
     val playerTwoScore: Int
