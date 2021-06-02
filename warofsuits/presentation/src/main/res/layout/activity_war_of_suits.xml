@@ -11,21 +11,9 @@
         android:id="@+id/imgResetGame"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginEnd="16dp"
         android:src="@drawable/ic_reset"
-        app:layout_constraintBottom_toBottomOf="@+id/txtRules"
-        app:layout_constraintEnd_toStartOf="@+id/imgCloseGame"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/txtRules"
-        app:layout_constraintTop_toTopOf="@+id/txtRules" />
-
-    <TextView
-        android:id="@+id/txtRules"
-        style="@style/BodyText"
-        android:text="Rules"
-        app:layout_constraintBottom_toBottomOf="@+id/textView"
-        app:layout_constraintEnd_toStartOf="@+id/imgResetGame"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/textView"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="@+id/textView" />
 
     <ImageView
@@ -33,11 +21,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:src="@drawable/ic_close"
-        app:layout_constraintBottom_toBottomOf="@+id/txtRules"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/imgResetGame"
-        app:layout_constraintTop_toTopOf="@+id/txtRules" />
+        app:layout_constraintStart_toStartOf="@+id/txtRoundWinnerTitle"
+        app:layout_constraintTop_toTopOf="@+id/textView" />
 
     <TextView
         android:id="@+id/textView"
@@ -47,17 +32,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
-
-    <Button
-        android:id="@+id/btnPlayRound"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:backgroundTint="@color/colorPrimaryDark"
-        android:text="Play Round"
-        app:layout_constraintBottom_toTopOf="@+id/view"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
         android:id="@+id/txtPlayerOneName"
@@ -78,7 +52,7 @@
         app:layout_constraintEnd_toStartOf="@+id/imgDiscardDeckPlayerOne"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/txtPlayerOneName"
-        app:layout_constraintTop_toBottomOf="@+id/textView" />
+        app:layout_constraintTop_toBottomOf="@+id/txtRemainingRoundsTitle" />
 
     <ImageView
         android:id="@+id/imgDiscardDeckPlayerOne"
@@ -93,8 +67,8 @@
 
     <ImageView
         android:id="@+id/imgCardPlayerOne"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
+        android:layout_width="130dp"
+        android:layout_height="130dp"
         app:layout_constraintBottom_toTopOf="@+id/btnPlayRound"
         app:layout_constraintEnd_toStartOf="@+id/imgCardPlayerTwo"
         app:layout_constraintHorizontal_bias="0.5"
@@ -185,8 +159,8 @@
 
     <ImageView
         android:id="@+id/imgCardPlayerTwo"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
+        android:layout_width="130dp"
+        android:layout_height="130dp"
         app:layout_constraintBottom_toBottomOf="@+id/imgCardPlayerOne"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
@@ -199,7 +173,50 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.75" />
+        app:layout_constraintGuide_percent="0.90" />
+
+    <TextView
+        android:id="@+id/txtRoundWinnerTitle"
+        style="@style/BodyText"
+        android:layout_marginTop="16dp"
+        android:text="Winner: "
+        app:layout_constraintStart_toStartOf="@+id/txtPlayerOneName"
+        app:layout_constraintTop_toBottomOf="@+id/textView" />
+
+    <TextView
+        android:id="@+id/txtRoundWinner"
+        style="@style/BodyText"
+        app:layout_constraintStart_toEndOf="@+id/txtRoundWinnerTitle"
+        app:layout_constraintTop_toTopOf="@+id/txtRoundWinnerTitle"
+        tools:text="Player One" />
+
+    <TextView
+        android:id="@+id/txtGameWinnerTitle"
+        style="@style/BodyText"
+        android:text="Game Winner: "
+        app:layout_constraintStart_toStartOf="@+id/txtRoundWinnerTitle"
+        app:layout_constraintTop_toBottomOf="@+id/txtRoundWinnerTitle" />
+
+    <TextView
+        android:id="@+id/txtGameWinner"
+        style="@style/BodyText"
+        app:layout_constraintStart_toEndOf="@+id/txtGameWinnerTitle"
+        app:layout_constraintTop_toBottomOf="@+id/txtRoundWinnerTitle"
+        tools:text="Player One" />
+
+    <TextView
+        android:id="@+id/txtRemainingRoundsTitle"
+        style="@style/BodyText"
+        android:text="Remaining rounds: "
+        app:layout_constraintStart_toStartOf="@+id/txtRoundWinnerTitle"
+        app:layout_constraintTop_toBottomOf="@+id/txtGameWinnerTitle" />
+
+    <TextView
+        android:id="@+id/txtRemainingRounds"
+        style="@style/BodyText"
+        app:layout_constraintStart_toEndOf="@+id/txtRemainingRoundsTitle"
+        app:layout_constraintTop_toBottomOf="@+id/txtGameWinnerTitle"
+        tools:text="26" />
 
     <View
         android:id="@+id/view"
@@ -208,21 +225,40 @@
         android:background="@color/colorPrimaryDark"
         app:layout_constraintTop_toTopOf="@+id/guideline" />
 
-    <TextView
-        android:id="@+id/txtRoundWinnerTitle"
-        style="@style/HeadlineText"
-        android:text="Winner"
-        app:layout_constraintBottom_toTopOf="@+id/txtRoundWinner"
-        app:layout_constraintEnd_toEndOf="@+id/txtRoundWinner"
-        app:layout_constraintStart_toStartOf="@+id/txtRoundWinner"
-        app:layout_constraintTop_toBottomOf="@+id/view" />
-
-    <TextView
-        android:id="@+id/txtRoundWinner"
-        style="@style/HeadlineText"
+    <Button
+        android:id="@+id/btnPlayRound"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:backgroundTint="@color/colorPrimaryDark"
+        android:text="Play Round"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/btnShowRules"
+        app:layout_constraintTop_toTopOf="@+id/view" />
+
+    <Button
+        android:id="@+id/btnShowRules"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:backgroundTint="@color/colorPrimaryDark"
+        android:text="Rules"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/btnPlayRound"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/btnShowHistory"
+        app:layout_constraintTop_toTopOf="@+id/view" />
+
+    <Button
+        android:id="@+id/btnShowHistory"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:backgroundTint="@color/colorPrimaryDark"
+        android:text="History"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/btnShowRules"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/view"
-        tools:text="Player One" />
+        app:layout_constraintTop_toTopOf="@+id/view" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

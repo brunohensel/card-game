@@ -45,7 +45,7 @@ class WarOfSuitsActivity : AppCompatActivity() {
         when (state.syncState) {
             Finish  -> showFinishedRound(state.hand)
             Idle    -> {}
-            Round   -> showRoundInfo(state.hand)
+            Round   -> showRoundInfo(state.rounds, state.hand)
             Started -> setPlayersConfig(state.players)
             Restarted -> handleRestartState()
         }
@@ -63,7 +63,7 @@ class WarOfSuitsActivity : AppCompatActivity() {
 
     private fun showFinishedRound(hand: Hand?) {
         hand?.run {
-            binding.txtRoundWinner.text = winner?.name ?: "The game has tied"
+            binding.txtGameWinner.text = winner?.name ?: "The game has tied"
         }
     }
 
@@ -76,9 +76,10 @@ class WarOfSuitsActivity : AppCompatActivity() {
         }
     }
 
-    private fun showRoundInfo(hand: Hand?) {
+    private fun showRoundInfo(rounds: Int, hand: Hand?) {
         with(binding) {
             hand?.run {
+                txtRemainingRounds.text = rounds.toString()
                 txtPlayerOneScore.text = playerOneScore.toString()
                 txtPlayerTwoScore.text = playerTwoScore.toString()
                 imgCardPlayerOne.setImageDrawable(getDrawableFromRes(playedHands.first.front))

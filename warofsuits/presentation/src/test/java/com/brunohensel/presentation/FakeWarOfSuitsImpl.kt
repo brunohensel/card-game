@@ -28,18 +28,19 @@ class FakeWarOfSuitsImpl : WarOfSuits {
     }
 
     override fun playRound(): Round {
-
+        playerOne.regularPile.cards.pollLast()
+        playerTwo.regularPile.cards.pollLast()
       return if (shouldEndGame){
           Round.Finished(playerOne)
       }else {
           if (shouldOneWin) {
               playerOne.discardPile.cards.add(Card(Ranks.KING, Suits.HEARTS))
               playerOne.discardPile.cards.add(Card(Ranks.THREE, Suits.CLUBS))
-              Round.Played(handOne)
+              Round.Played(playerOne.regularPile.cards.size, handOne)
           } else {
               playerTwo.discardPile.cards.add(Card(Ranks.NINE, Suits.HEARTS))
               playerTwo.discardPile.cards.add(Card(Ranks.EIGHT, Suits.DIAMONDS))
-              Round.Played(handTwo)
+              Round.Played(playerOne.regularPile.cards.size, handTwo)
           }
       }
     }

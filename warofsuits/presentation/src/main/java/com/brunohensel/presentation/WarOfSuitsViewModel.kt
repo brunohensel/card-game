@@ -47,6 +47,7 @@ class WarOfSuitsViewModel @Inject constructor(
                 WarOfSuitsState(
                     players = state.value.players,
                     hand = result.hand,
+                    rounds = result.remainingRound,
                     syncState = WarOfSuitsSyncState.Round
                 )
             )

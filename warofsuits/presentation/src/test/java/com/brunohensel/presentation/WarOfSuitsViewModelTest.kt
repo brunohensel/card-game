@@ -32,6 +32,7 @@ internal class WarOfSuitsViewModelTest : BaseUnitTest<WarOfSuitsViewModel>() {
             val expectedOne =   WarOfSuitsState(
                 players = Pair(fakeGame.playerOne, fakeGame.playerTwo),
                 hand = fakeGame.handOne,
+                rounds = 3,
                 syncState = WarOfSuitsSyncState.Round
             )
             tested.dispatch(WarOfSuitsEvents.PlayRound)
@@ -39,6 +40,7 @@ internal class WarOfSuitsViewModelTest : BaseUnitTest<WarOfSuitsViewModel>() {
             val expectedTwo =   WarOfSuitsState(
                 players = Pair(fakeGame.playerOne, fakeGame.playerTwo),
                 hand = fakeGame.handTwo,
+                rounds = 2,
                 syncState = WarOfSuitsSyncState.Round
             )
             tested.dispatch(WarOfSuitsEvents.PlayRound)

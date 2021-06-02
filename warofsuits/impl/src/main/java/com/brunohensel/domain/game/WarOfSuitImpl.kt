@@ -62,6 +62,7 @@ internal class WarOfSuitImpl @Inject constructor(
             return if (winnerCard == cardPlayerOne) {
                 playerOne.discardPile.cards.addCardToDiscardPile(cardPlayerOne, cardPlayerTwo)
                 Round.Played(
+                    playerOne.regularPile.cards.size,
                     Hand(
                         winner = playerOne,
                         loser = playerTwo,
@@ -73,6 +74,7 @@ internal class WarOfSuitImpl @Inject constructor(
             } else {
                 playerTwo.discardPile.cards.addCardToDiscardPile(cardPlayerOne, cardPlayerTwo)
                 Round.Played(
+                    playerOne.regularPile.cards.size,
                     Hand(
                         winner = playerTwo,
                         loser = playerOne,
