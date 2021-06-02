@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="HeadlineText" parent="TextAppearance.MaterialComponents.Headline6">
+        <item name="android:textColor">@color/onPrimary</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+    </style>
+
+    <style name="BodyText" parent="TextAppearance.MaterialComponents.Body1">
+        <item name="android:textColor">@color/onPrimaryLight</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+    </style>
+</resources>

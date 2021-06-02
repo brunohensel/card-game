@@ -48,7 +48,7 @@ internal class WarOfSuitsRules @Inject constructor(private val suitsPriorityProv
 
     /**
      * Checks which player has the bigger discard pile, this player is the winner of the game.
-     * @return [Option] that or contains the winner in the Some<> data constructor or it will be
+     * @return [Option] which contains the winner in the Some<> data constructor or it will be
      * None, which indicates that the game has tied.
      */
     fun defineGameWinner(

@@ -21,8 +21,7 @@
 
     <TextView
         android:id="@+id/txtGameName"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        style="@style/BodyText"
         android:layout_marginBottom="8dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@id/imgGameIcon"

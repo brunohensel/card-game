@@ -50,22 +50,26 @@ internal class WarOfSuitImpl @Inject constructor(
         if (cardPlayerOne != null && cardPlayerTwo != null) {
             val winnerCard = gameRule.validateRound(cardPlayerOne, cardPlayerTwo)
             return if (winnerCard == cardPlayerOne) {
-                playerOne.discardPile.cards.addCardToDiscardPile(
-                    cardPlayerOne,
-                    cardPlayerTwo
-                )
+                playerOne.discardPile.cards.addCardToDiscardPile(cardPlayerOne, cardPlayerTwo)
                 Round.RoundWinner(
-                    playerOne, Pair(playerOne, playerTwo),
-                    Hand(Pair(winnerCard, cardPlayerTwo))
+                    Hand(
+                        winner = playerOne,
+                        loser = playerTwo,
+                        playedHands = Pair(cardPlayerOne, cardPlayerTwo),
+                        playerOneScore = playerOne.discardPile.cards.size / 2,
+                        playerTwoScore = playerTwo.discardPile.cards.size / 2
+                    )
                 )
             } else {
-                playerTwo.discardPile.cards.addCardToDiscardPile(
-                    cardPlayerOne,
-                    cardPlayerTwo
-                )
+                playerTwo.discardPile.cards.addCardToDiscardPile(cardPlayerOne, cardPlayerTwo)
                 Round.RoundWinner(
-                    playerTwo, Pair(playerOne, playerTwo),
-                    Hand(Pair(winnerCard, cardPlayerOne))
+                    Hand(
+                        winner = playerTwo,
+                        loser = playerOne,
+                        playedHands = Pair(cardPlayerOne, cardPlayerTwo),
+                        playerOneScore = playerOne.discardPile.cards.size / 2,
+                        playerTwoScore = playerTwo.discardPile.cards.size / 2
+                    )
                 )
             }
 

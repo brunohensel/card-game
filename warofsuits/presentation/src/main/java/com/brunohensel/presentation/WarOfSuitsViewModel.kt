@@ -19,7 +19,7 @@ class WarOfSuitsViewModel @Inject constructor(
     override fun process(event: WarOfSuitsEvents): Flow<WarOfSuitsState> {
         return when (event) {
             PlayRound -> playRound()
-            Start -> startGame()
+            Start     -> startGame()
         }
     }
 
@@ -31,12 +31,15 @@ class WarOfSuitsViewModel @Inject constructor(
     private fun playRound(): Flow<WarOfSuitsState> = flow {
         when (val result = game.playRound()) {
             is Round.Finished -> {
-                emit(WarOfSuitsState(winner = result.winner, syncState = WarOfSuitsSyncState.Finish))
+                emit(WarOfSuitsState(
+                    players = state.value.players,
+                    hand = state.value.hand?.copy(winner = result.winner),
+                    syncState = WarOfSuitsSyncState.Finish
+                ))
             }
             is Round.RoundWinner -> emit(
                 WarOfSuitsState(
-                    players = result.players,
-                    winner = result.winner,
+                    players = state.value.players,
                     hand = result.hand,
                     syncState = WarOfSuitsSyncState.Round
                 )
