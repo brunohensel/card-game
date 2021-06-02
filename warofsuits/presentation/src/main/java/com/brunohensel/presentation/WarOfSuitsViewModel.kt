@@ -3,8 +3,7 @@ package com.brunohensel.presentation
 import com.brunohensel.WarOfSuits
 import com.brunohensel.core.base.viewmodel.BaseStateViewModel
 import com.brunohensel.domain.WarOfSuitsEvents
-import com.brunohensel.domain.WarOfSuitsEvents.PlayRound
-import com.brunohensel.domain.WarOfSuitsEvents.Start
+import com.brunohensel.domain.WarOfSuitsEvents.*
 import com.brunohensel.domain.state.WarOfSuitsState
 import com.brunohensel.domain.state.WarOfSuitsSyncState
 import com.brunohensel.model.Round
@@ -20,7 +19,14 @@ class WarOfSuitsViewModel @Inject constructor(
         return when (event) {
             PlayRound -> playRound()
             Start     -> startGame()
+            Restart   -> restartGame()
         }
+    }
+
+    private fun restartGame(): Flow<WarOfSuitsState> = flow {
+        game.restartGame()
+        game.start()
+        emit(WarOfSuitsState(game.getPlayers(), syncState = WarOfSuitsSyncState.Restarted))
     }
 
     private fun startGame(): Flow<WarOfSuitsState> = flow {
@@ -37,7 +43,7 @@ class WarOfSuitsViewModel @Inject constructor(
                     syncState = WarOfSuitsSyncState.Finish
                 ))
             }
-            is Round.RoundWinner -> emit(
+            is Round.Played -> emit(
                 WarOfSuitsState(
                     players = state.value.players,
                     hand = result.hand,

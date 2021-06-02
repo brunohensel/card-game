@@ -12,8 +12,8 @@ class FakeWarOfSuitsImpl : WarOfSuits {
 
     val playerOne = Player(name = "Player one")
     val playerTwo = Player(name = "Player two")
-    val handOne = Hand(Pair(Card(Ranks.KING, Suits.HEARTS), Card(Ranks.THREE, Suits.CLUBS)))
-    val handTwo = Hand(Pair(Card(Ranks.NINE, Suits.HEARTS), Card(Ranks.EIGHT, Suits.DIAMONDS)))
+    val handOne = Hand(playerOne, playerTwo, Pair(Card(Ranks.KING, Suits.HEARTS), Card(Ranks.THREE, Suits.CLUBS)),10, 2)
+    val handTwo = Hand(playerTwo, playerOne, Pair(Card(Ranks.NINE, Suits.HEARTS), Card(Ranks.EIGHT, Suits.DIAMONDS)),2, 10)
 
     var shouldOneWin = false
     var shouldEndGame = false
@@ -35,19 +35,17 @@ class FakeWarOfSuitsImpl : WarOfSuits {
           if (shouldOneWin) {
               playerOne.discardPile.cards.add(Card(Ranks.KING, Suits.HEARTS))
               playerOne.discardPile.cards.add(Card(Ranks.THREE, Suits.CLUBS))
-              Round.RoundWinner(
-                  playerOne, Pair(playerOne, playerTwo),
-                  Hand(Pair(Card(Ranks.KING, Suits.HEARTS), Card(Ranks.THREE, Suits.CLUBS)))
-              )
+              Round.Played(handOne)
           } else {
               playerTwo.discardPile.cards.add(Card(Ranks.NINE, Suits.HEARTS))
               playerTwo.discardPile.cards.add(Card(Ranks.EIGHT, Suits.DIAMONDS))
-              Round.RoundWinner(
-                  playerTwo, Pair(playerOne, playerTwo),
-                  Hand(Pair(Card(Ranks.NINE, Suits.HEARTS), Card(Ranks.EIGHT, Suits.DIAMONDS)))
-              )
+              Round.Played(handTwo)
           }
       }
+    }
+
+    override fun restartGame(): Round {
+       return Round.Restarted
     }
 
     val deck1 = mutableListOf(

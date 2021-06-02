@@ -12,6 +12,7 @@ data class WarOfSuitsState(
 sealed class WarOfSuitsSyncState {
     object Idle : WarOfSuitsSyncState()
     object Started : WarOfSuitsSyncState()
+    object Restarted : WarOfSuitsSyncState()
     object Round : WarOfSuitsSyncState()
     object Finish : WarOfSuitsSyncState()
 }

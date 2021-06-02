@@ -34,11 +34,21 @@ internal class WarOfSuitImpl @Inject constructor(
     }
 
     override fun start() {
+        clearPreviousDeck()
         with(localSource.fetchDeckOfCards()) {
             val (playerOneDeque, playerTwoDeque) = chunked(this.size / 2)
             playerOne.regularPile.cards.addAll(playerOneDeque)
             playerTwo.regularPile.cards.addAll(playerTwoDeque)
         }
+    }
+
+    private fun clearPreviousDeck() {
+        playerOne.regularPile.cards.clear()
+        playerTwo.regularPile.cards.clear()
+        playerOne.discardPile.cards.clear()
+        playerTwo.discardPile.cards.clear()
+        playerOne.layDownCard = null
+        playerTwo.layDownCard = null
     }
 
     override fun playRound(): Round {
@@ -51,7 +61,7 @@ internal class WarOfSuitImpl @Inject constructor(
             val winnerCard = gameRule.validateRound(cardPlayerOne, cardPlayerTwo)
             return if (winnerCard == cardPlayerOne) {
                 playerOne.discardPile.cards.addCardToDiscardPile(cardPlayerOne, cardPlayerTwo)
-                Round.RoundWinner(
+                Round.Played(
                     Hand(
                         winner = playerOne,
                         loser = playerTwo,
@@ -62,7 +72,7 @@ internal class WarOfSuitImpl @Inject constructor(
                 )
             } else {
                 playerTwo.discardPile.cards.addCardToDiscardPile(cardPlayerOne, cardPlayerTwo)
-                Round.RoundWinner(
+                Round.Played(
                     Hand(
                         winner = playerTwo,
                         loser = playerOne,
@@ -76,6 +86,11 @@ internal class WarOfSuitImpl @Inject constructor(
         } else {
             return findGameWinner()
         }
+    }
+
+    override fun restartGame(): Round {
+        clearPreviousDeck()
+        return Round.Restarted
     }
 
     private fun findGameWinner(): Finished {

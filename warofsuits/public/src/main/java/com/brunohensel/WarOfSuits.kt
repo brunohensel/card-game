@@ -25,4 +25,9 @@ interface WarOfSuits {
      * such as, winner, players, and hands.
      */
     fun playRound(): Round
+
+    /**
+     * Allows the players to start a new game. It will set all players deque as empty
+     */
+    fun restartGame(): Round
 }

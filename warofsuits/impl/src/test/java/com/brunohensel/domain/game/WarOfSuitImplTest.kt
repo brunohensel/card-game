@@ -64,17 +64,17 @@ internal class WarOfSuitImplTest : BaseUnitTest<WarOfSuitImpl>(){
         val game: WarOfSuits = WarOfSuitImpl(FakeDeck(), playerOne, playerTwo, WarOfSuitsRules(fakeSuitsProvider))
         game.start()
         val resultRoundOne = game.playRound()
-        assert(resultRoundOne is Round.RoundWinner && resultRoundOne.winner == playerTwo )
+        assert(resultRoundOne is Round.Played && resultRoundOne.hand.winner == playerTwo )
 
         val resultRoundTwo = game.playRound()
-        assert(resultRoundTwo is Round.RoundWinner && resultRoundTwo.winner == playerOne)
+        assert(resultRoundTwo is Round.Played && resultRoundTwo.hand.winner == playerOne)
 
         val resultRoundThree = game.playRound()
-        assert(resultRoundThree is Round.RoundWinner && resultRoundThree.winner == playerTwo)
+        assert(resultRoundThree is Round.Played && resultRoundThree.hand.winner == playerTwo)
 
         //In case that both cards have equal value, the winner card is decided based on their suits
         val resultRoundFour = game.playRound()
-        assert(resultRoundFour is Round.RoundWinner && resultRoundFour.winner == playerTwo)
+        assert(resultRoundFour is Round.Played && resultRoundFour.hand.winner == playerTwo)
     }
 
     @Test
@@ -134,5 +134,22 @@ internal class WarOfSuitImplTest : BaseUnitTest<WarOfSuitImpl>(){
         assert(playerOneDiscardDeque.size == playerTwoDiscardDeque.size)
         val result = game.playRound()
         assert(result == Round.Finished(isTied = true))
+    }
+
+    @Test
+    fun `All players deque will be set as empty when the game is restarted`(){
+        val fakeSuitsProvider: SuitsProvider = FakeSuitsProvider()
+        val tested: WarOfSuits = WarOfSuitImpl(FakeDeck(), playerOne, playerTwo, WarOfSuitsRules(fakeSuitsProvider))
+        val playerOneDeque = playerOne.regularPile.cards
+        val playerTwoDeque = playerTwo.regularPile.cards
+        val playerTwoDiscardDeque = playerTwo.discardPile.cards
+        tested.start()
+        assert(playerOneDeque.isNotEmpty() && playerTwoDeque.isNotEmpty())
+
+        tested.playRound()
+        assert(playerTwoDiscardDeque.isNotEmpty())
+
+        tested.restartGame()
+        assert(playerOneDeque.isEmpty() && playerTwoDeque.isEmpty() && playerTwoDiscardDeque.isEmpty())
     }
 }
