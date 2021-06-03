@@ -28,11 +28,12 @@ class WarOfSuitsActivity : AppCompatActivity() {
     lateinit var viewModelFactory: ViewModelProvider.Factory
     private val viewModel: WarOfSuitsViewModel by viewModels { viewModelFactory }
     private lateinit var binding: ActivityWarOfSuitsBinding
+    private var isEndTheGame = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
         (application as WarOfSuitsComponentProvider)
             .provideWarOfSuitsComponent()
-            .inject(this@WarOfSuitsActivity)
+            .inject(this)
         super.onCreate(savedInstanceState)
         binding = ActivityWarOfSuitsBinding.inflate(layoutInflater)
         setContentView(binding.root)
@@ -48,18 +49,32 @@ class WarOfSuitsActivity : AppCompatActivity() {
             .collectIn(this)
 
         with(binding) {
-            btnPlayRound.setOnClickListener { viewModel.dispatch(WarOfSuitsEvents.PlayRound) }
             imgCloseGame.setOnClickListener { finish() }
             imgResetGame.setOnClickListener { viewModel.dispatch(WarOfSuitsEvents.Restart) }
             btnShowHistory.setOnClickListener { viewModel.dispatch(WarOfSuitsEvents.History) }
             btnShowRules.setOnClickListener { viewModel.dispatch(WarOfSuitsEvents.Rules) }
+            btnPlayRound.setOnClickListener { handleNextOrLastRound() }
         }
+    }
+
+    private fun handleNextOrLastRound() {
+        if (isEndTheGame) {
+            viewModel.dispatch(WarOfSuitsEvents.Restart)
+            setDefaultValuesForNewGame()
+        } else {
+            viewModel.dispatch(WarOfSuitsEvents.PlayRound)
+        }
+    }
+
+    private fun setDefaultValuesForNewGame() {
+        isEndTheGame = false
+        binding.btnPlayRound.text = "PlAY ROUND"
     }
 
     private fun processSingleEvent(singleEvent: WarOfSuitsSingleEvents) {
         when (singleEvent) {
             is History -> showHistoryDialog(singleEvent.history)
-            is Rules   -> showRulesDialog(singleEvent.suits)
+            is Rules -> showRulesDialog(singleEvent.suits)
         }
     }
 
@@ -75,7 +90,8 @@ class WarOfSuitsActivity : AppCompatActivity() {
     private fun renderState(state: WarOfSuitsState) {
         when (state.syncState) {
             Finish -> showFinishedRound(state.hand)
-            Idle -> { }
+            Idle -> {
+            }
             Round -> showRoundInfo(state.rounds, state.hand)
             Started -> setPlayersConfig(state.players)
             Restarted -> handleRestartState()
@@ -89,11 +105,14 @@ class WarOfSuitsActivity : AppCompatActivity() {
             imgCardPlayerOne.setImageDrawable(null)
             imgCardPlayerTwo.setImageDrawable(null)
             txtRoundWinner.text = ""
+            setDefaultValuesForNewGame()
         }
     }
 
     private fun showFinishedRound(hand: Hand?) {
         hand?.run {
+            binding.btnPlayRound.text = "Play again"
+            isEndTheGame = true
             binding.txtGameWinner.text = winner ?: "The game has tied"
         }
     }
