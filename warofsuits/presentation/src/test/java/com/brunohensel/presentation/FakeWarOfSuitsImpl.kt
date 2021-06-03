@@ -49,6 +49,10 @@ class FakeWarOfSuitsImpl : WarOfSuits {
        return Round.Restarted
     }
 
+    override fun fetchShuffledSuits(): List<Suits> {
+        return Suits.values().toList()
+    }
+
     val deck1 = mutableListOf(
         //Player one deck
         Card(Ranks.ACE, Suits.CLUBS),

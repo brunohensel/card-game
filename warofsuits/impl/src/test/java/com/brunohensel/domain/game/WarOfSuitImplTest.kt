@@ -11,6 +11,7 @@ import com.brunohensel.domain.rules.WarOfSuitsRules
 import com.brunohensel.model.Player
 import com.brunohensel.model.Round
 import com.brunohensel.test.BaseUnitTest
+import org.junit.Before
 import org.junit.Test
 
 internal class WarOfSuitImplTest : BaseUnitTest<WarOfSuitImpl>(){
@@ -19,7 +20,8 @@ internal class WarOfSuitImplTest : BaseUnitTest<WarOfSuitImpl>(){
     private val dataSource: WarOfSuitLocalDataSource = WarOfSuitLocalDataSourceImpl(deck)
     private val playerOne = Player(name = "playerOne")
     private val playerTwo = Player(name = "playerTwo")
-    override fun sut(): WarOfSuitImpl = WarOfSuitImpl(dataSource, playerOne, playerTwo, WarOfSuitsRules(suitsProvider))
+
+    override fun sut(): WarOfSuitImpl = WarOfSuitImpl(dataSource, playerOne, playerTwo, suitsProvider, WarOfSuitsRules(suitsProvider))
 
     @Test
     fun `The whole set must be split into two piles of equal size and each player gets one`() {
@@ -61,7 +63,7 @@ internal class WarOfSuitImplTest : BaseUnitTest<WarOfSuitImpl>(){
     @Test
     fun `The player holding the highest value card wins the round`() {
         val fakeSuitsProvider: SuitsProvider = FakeSuitsProvider()
-        val game: WarOfSuits = WarOfSuitImpl(FakeDeck(), playerOne, playerTwo, WarOfSuitsRules(fakeSuitsProvider))
+        val game: WarOfSuits = WarOfSuitImpl(FakeDeck(), playerOne, playerTwo,fakeSuitsProvider, WarOfSuitsRules(fakeSuitsProvider))
         game.start()
         val resultRoundOne = game.playRound()
         assert(resultRoundOne is Round.Played && resultRoundOne.hand.winner == playerTwo.name )
@@ -80,7 +82,7 @@ internal class WarOfSuitImplTest : BaseUnitTest<WarOfSuitImpl>(){
     @Test
     fun `The winner puts both cards into their discard pile`() {
         val fakeSuitsProvider: SuitsProvider = FakeSuitsProvider()
-        val game: WarOfSuits = WarOfSuitImpl(FakeDeck(), playerOne, playerTwo, WarOfSuitsRules(fakeSuitsProvider))
+        val game: WarOfSuits = WarOfSuitImpl(FakeDeck(), playerOne, playerTwo, fakeSuitsProvider, WarOfSuitsRules(fakeSuitsProvider))
         game.start()
         assert(playerOne.discardPile.cards.isEmpty())
         assert(playerTwo.discardPile.cards.isEmpty())
@@ -96,7 +98,7 @@ internal class WarOfSuitImplTest : BaseUnitTest<WarOfSuitImpl>(){
     @Test
     fun `The game finishes when both players have played all of their cards`() {
         val fakeSuitsProvider: SuitsProvider = FakeSuitsProvider()
-        val game: WarOfSuits = WarOfSuitImpl(FakeDeck(), playerOne, playerTwo, WarOfSuitsRules(fakeSuitsProvider))
+        val game: WarOfSuits = WarOfSuitImpl(FakeDeck(), playerOne, playerTwo,fakeSuitsProvider, WarOfSuitsRules(fakeSuitsProvider))
         game.start()
         val playerOneRegularDeque = playerOne.regularPile.cards
         val playerTwoRegularDeque = playerTwo.regularPile.cards
@@ -109,7 +111,7 @@ internal class WarOfSuitImplTest : BaseUnitTest<WarOfSuitImpl>(){
     @Test
     fun `The player with more cards in their discard pile wins the game`(){
         val fakeSuitsProvider: SuitsProvider = FakeSuitsProvider()
-        val game: WarOfSuits = WarOfSuitImpl(FakeDeck(), playerOne, playerTwo, WarOfSuitsRules(fakeSuitsProvider))
+        val game: WarOfSuits = WarOfSuitImpl(FakeDeck(), playerOne, playerTwo,fakeSuitsProvider, WarOfSuitsRules(fakeSuitsProvider))
         game.start()
         val playerOneRegularDeque = playerOne.regularPile.cards
         val playerTwoRegularDeque = playerTwo.regularPile.cards
@@ -124,7 +126,7 @@ internal class WarOfSuitImplTest : BaseUnitTest<WarOfSuitImpl>(){
     @Test
     fun `The game will tie when both player have the same amount in the discard pile`(){
         val fakeSuitsProvider: SuitsProvider = FakeSuitsProvider()
-        val game: WarOfSuits = WarOfSuitImpl(FakeDeckTie(), playerOne, playerTwo, WarOfSuitsRules(fakeSuitsProvider))
+        val game: WarOfSuits = WarOfSuitImpl(FakeDeckTie(), playerOne, playerTwo,fakeSuitsProvider, WarOfSuitsRules(fakeSuitsProvider))
         game.start()
         val playerOneRegularDeque = playerOne.regularPile.cards
         val playerTwoRegularDeque = playerTwo.regularPile.cards
@@ -139,7 +141,7 @@ internal class WarOfSuitImplTest : BaseUnitTest<WarOfSuitImpl>(){
     @Test
     fun `All players deque will be set as empty when the game is restarted`(){
         val fakeSuitsProvider: SuitsProvider = FakeSuitsProvider()
-        val tested: WarOfSuits = WarOfSuitImpl(FakeDeck(), playerOne, playerTwo, WarOfSuitsRules(fakeSuitsProvider))
+        val tested: WarOfSuits = WarOfSuitImpl(FakeDeck(), playerOne, playerTwo, fakeSuitsProvider, WarOfSuitsRules(fakeSuitsProvider))
         val playerOneDeque = playerOne.regularPile.cards
         val playerTwoDeque = playerTwo.regularPile.cards
         val playerTwoDiscardDeque = playerTwo.discardPile.cards
@@ -151,5 +153,20 @@ internal class WarOfSuitImplTest : BaseUnitTest<WarOfSuitImpl>(){
 
         tested.restartGame()
         assert(playerOneDeque.isEmpty() && playerTwoDeque.isEmpty() && playerTwoDiscardDeque.isEmpty())
+    }
+
+    @Test
+    fun `fetchShuffledSuits should return a list of shuffled suits, and shou be the same throughout the same game `(){
+        tested.start()
+        val shuffledOne = tested.fetchShuffledSuits()
+        val shuffledTwo = tested.fetchShuffledSuits()
+        assert(shuffledOne == shuffledTwo)
+        tested.playRound()
+        tested.playRound()
+        assert(shuffledOne.first() == shuffledTwo.first())
+        tested.restartGame()
+        tested.start()
+        val shuffledThree = tested.fetchShuffledSuits()
+        assert(shuffledOne != shuffledThree)
     }
 }

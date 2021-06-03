@@ -8,5 +8,13 @@ import com.brunohensel.core.cardtypes.warofsuits.Suits
  * I chose this approach because it makes easy to apply unit test by using a fake implementation.
  */
 interface SuitsProvider {
+    /**
+     * get the shuffled suits for a game
+     */
     val  shuffledSuits: List<Suits>
+
+    /**
+     * Helper function to shuffle the suits if the player restarts the game.
+     */
+    fun shuffleSuits()
 }

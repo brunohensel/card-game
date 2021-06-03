@@ -3,8 +3,10 @@ package com.brunohensel.domain.game
 import com.brunohensel.WarOfSuits
 import com.brunohensel.core.annotations.ApplicationScope
 import com.brunohensel.core.cardtypes.Card
+import com.brunohensel.core.cardtypes.warofsuits.Suits
 import com.brunohensel.core.getOrNull
 import com.brunohensel.datasource.local.WarOfSuitLocalDataSource
+import com.brunohensel.domain.rules.SuitsProvider
 import com.brunohensel.domain.rules.WarOfSuitsRules
 import com.brunohensel.model.Hand
 import com.brunohensel.model.Player
@@ -26,6 +28,7 @@ internal class WarOfSuitImpl @Inject constructor(
     private val localSource: WarOfSuitLocalDataSource,
     @Named("Player1") private val playerOne: Player,
     @Named("Player2") private val playerTwo: Player,
+    private val suitsProvider: SuitsProvider,
     private val gameRule: WarOfSuitsRules
 ) : WarOfSuits {
 
@@ -35,6 +38,7 @@ internal class WarOfSuitImpl @Inject constructor(
 
     override fun start() {
         clearPreviousDeck()
+        gameRule.shuffleSuits()
         with(localSource.fetchDeckOfCards()) {
             val (playerOneDeque, playerTwoDeque) = chunked(this.size / 2)
             playerOne.regularPile.cards.addAll(playerOneDeque)
@@ -93,6 +97,10 @@ internal class WarOfSuitImpl @Inject constructor(
     override fun restartGame(): Round {
         clearPreviousDeck()
         return Round.Restarted
+    }
+
+    override fun fetchShuffledSuits(): List<Suits> {
+       return suitsProvider.shuffledSuits
     }
 
     private fun findGameWinner(): Finished {

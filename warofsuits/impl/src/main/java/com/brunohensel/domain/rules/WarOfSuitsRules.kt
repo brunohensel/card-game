@@ -6,7 +6,6 @@ import com.brunohensel.core.cardtypes.Card
 import com.brunohensel.core.cardtypes.warofsuits.Ranks
 import java.util.*
 import javax.inject.Inject
-import javax.inject.Singleton
 
 /**
  * Class that implements the Rule interface and encapsulates the rules that will be applied to
@@ -24,14 +23,14 @@ internal class WarOfSuitsRules @Inject constructor(private val suitsPriorityProv
      */
     fun validateRound(playerOneCard: Card, playerTwoCard: Card): Card {
 
-       val playerOneRank =  playerOneCard.rank as Ranks
-        val playerTwoRank =  playerTwoCard.rank as Ranks
+        val playerOneRank = playerOneCard.rank as Ranks
+        val playerTwoRank = playerTwoCard.rank as Ranks
 
         return when {
             playerOneRank.ordinal > playerTwoRank.ordinal -> {
                 playerOneCard
             }
-            playerOneRank.ordinal < playerTwoRank.ordinal  -> {
+            playerOneRank.ordinal < playerTwoRank.ordinal -> {
                 playerTwoCard
             }
             else -> {
@@ -55,9 +54,13 @@ internal class WarOfSuitsRules @Inject constructor(private val suitsPriorityProv
         playerOneDiscard: Deque<Card>,
         playerTwoDiscard: Deque<Card>
     ): Option<Deque<Card>> =
-        when{
+        when {
             playerOneDiscard.size > playerTwoDiscard.size -> Option.Some(playerOneDiscard)
             playerOneDiscard.size < playerTwoDiscard.size -> Option.Some(playerTwoDiscard)
             else -> Option.None
         }
+
+    fun shuffleSuits() {
+        suitsPriorityProvider.shuffleSuits()
+    }
 }

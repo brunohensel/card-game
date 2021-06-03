@@ -1,5 +1,6 @@
 package com.brunohensel.presentation
 
+import com.brunohensel.core.cardtypes.warofsuits.Suits
 import com.brunohensel.domain.WarOfSuitsEvents
 import com.brunohensel.domain.WarOfSuitsSingleEvents
 import com.brunohensel.domain.state.WarOfSuitsState
@@ -85,6 +86,17 @@ internal class WarOfSuitsViewModelTest : BaseUnitTest<WarOfSuitsViewModel>() {
         tested.dispatch(WarOfSuitsEvents.History)
         val expectedState =  WarOfSuitsState(Pair(fakeGame.playerOne, fakeGame.playerTwo), syncState = WarOfSuitsSyncState.Idle)
         val expectedSingleEvent = WarOfSuitsSingleEvents.History(emptyList())
+        resultState.assertLast(expectedState).finish()
+        resultOneShot.assertLast(expectedSingleEvent).finish()
+    }
+
+    @Test
+    fun `emit WarOfSuitsSingleEvents for fetch Rules`() = testCoroutine {
+        val resultOneShot = tested.oneShotEvent.test(this)
+        val resultState = tested.state.test(this)
+        tested.dispatch(WarOfSuitsEvents.Rules)
+        val expectedState =  WarOfSuitsState(Pair(fakeGame.playerOne, fakeGame.playerTwo), syncState = WarOfSuitsSyncState.Idle)
+        val expectedSingleEvent = WarOfSuitsSingleEvents.Rules(Suits.values().toList())
         resultState.assertLast(expectedState).finish()
         resultOneShot.assertLast(expectedSingleEvent).finish()
     }

@@ -6,4 +6,8 @@ import com.brunohensel.domain.rules.SuitsProvider
 class FakeSuitsProvider : SuitsProvider {
     override val shuffledSuits: List<Suits>
         get() = Suits.values().toList()
+
+    override fun shuffleSuits() {
+        //no implementation necessary
+    }
 }

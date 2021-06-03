@@ -36,10 +36,16 @@ class WarOfSuitsViewModel @Inject constructor(
     override fun process(event: WarOfSuitsEvents): Flow<WarOfSuitsState> {
         return when (event) {
             PlayRound -> playRound()
-            Start -> startGame()
-            Restart -> restartGame()
-            History -> fetchGameHistory()
+            Start     -> startGame()
+            Restart   -> restartGame()
+            History   -> fetchGameHistory()
+            Rules     -> fetchGameRules()
         }
+    }
+
+    private fun fetchGameRules(): Flow<WarOfSuitsState> = flow {
+        eventChannel.send(WarOfSuitsSingleEvents.Rules(game.fetchShuffledSuits()))
+        emit(state.value.copy(syncState = WarOfSuitsSyncState.Idle))
     }
 
     private fun restartGame(): Flow<WarOfSuitsState> = flow {

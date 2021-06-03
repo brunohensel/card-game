@@ -1,5 +1,6 @@
 package com.brunohensel
 
+import com.brunohensel.core.cardtypes.warofsuits.Suits
 import com.brunohensel.model.Player
 import com.brunohensel.model.Round
 
@@ -30,4 +31,9 @@ interface WarOfSuits {
      * Allows the players to start a new game. It will set all players deque as empty
      */
     fun restartGame(): Round
+
+    /**
+     * Fetch the shuffled suits to be display in the rules section
+     */
+    fun fetchShuffledSuits(): List<Suits>
 }
