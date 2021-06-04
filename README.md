@@ -35,4 +35,4 @@ Some talks that helped me out: https://www.droidcon.com/media-detail?video=38084
 For single shot events, a channel was used.
 
 - Tests: For testing the units I made a lot of use of interfaces to be able to build fake implementations where it made sense, in order to test state and 
-not just behavior.
+not just behavior .
