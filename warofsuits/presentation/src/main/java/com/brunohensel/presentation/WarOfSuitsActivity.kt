@@ -103,6 +103,7 @@ class WarOfSuitsActivity : AppCompatActivity() {
             imgCardPlayerOne.setImageDrawable(null)
             imgCardPlayerTwo.setImageDrawable(null)
             txtRoundWinner.text = ""
+            txtGameWinner.text = ""
             setDefaultValuesForNewGame()
         }
     }

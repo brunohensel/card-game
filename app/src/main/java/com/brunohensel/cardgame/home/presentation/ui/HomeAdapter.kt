@@ -6,8 +6,8 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.brunohensel.cardgame.databinding.ItemHomeBinding
-import com.brunohensel.cardgame.home.domain.module.AvailableGame
-import com.brunohensel.cardgame.home.domain.module.GameType
+import com.brunohensel.cardgame.home.domain.model.AvailableGame
+import com.brunohensel.cardgame.home.domain.model.GameType
 
 class HomeAdapter(private val onClick: (GameType) -> Unit) :
     ListAdapter<AvailableGame, HomeAdapter.GameViewHolder>(HomeAdapter) {

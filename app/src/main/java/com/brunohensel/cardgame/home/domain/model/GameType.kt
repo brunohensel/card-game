@@ -1,4 +1,4 @@
-package com.brunohensel.cardgame.home.domain.module
+package com.brunohensel.cardgame.home.domain.model
 /**
  * Game type for all possible games that the app can/will support.
  */

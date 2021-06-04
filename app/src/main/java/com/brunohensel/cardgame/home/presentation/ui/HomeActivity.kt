@@ -5,12 +5,11 @@ import android.os.Bundle
 import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.isVisible
 import androidx.lifecycle.ViewModelProvider
 import com.brunohensel.cardgame.R
 import com.brunohensel.cardgame.application.component
 import com.brunohensel.cardgame.databinding.ActivityHomeBinding
-import com.brunohensel.cardgame.home.domain.module.GameType
+import com.brunohensel.cardgame.home.domain.model.GameType
 import com.brunohensel.cardgame.home.domain.state.HomeState
 import com.brunohensel.cardgame.home.domain.state.HomeSyncState
 import com.brunohensel.cardgame.home.presentation.HomeViewModel

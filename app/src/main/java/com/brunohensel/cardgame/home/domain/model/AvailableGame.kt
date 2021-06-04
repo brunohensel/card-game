@@ -1,4 +1,4 @@
-package com.brunohensel.cardgame.home.domain.module
+package com.brunohensel.cardgame.home.domain.model
 
 import androidx.annotation.DrawableRes
 

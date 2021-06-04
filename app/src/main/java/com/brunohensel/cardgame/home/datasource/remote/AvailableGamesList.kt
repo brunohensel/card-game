@@ -1,8 +1,8 @@
 package com.brunohensel.cardgame.home.datasource.remote
 
 import com.brunohensel.cardgame.R
-import com.brunohensel.cardgame.home.domain.module.AvailableGame
-import com.brunohensel.cardgame.home.domain.module.GameType
+import com.brunohensel.cardgame.home.domain.model.AvailableGame
+import com.brunohensel.cardgame.home.domain.model.GameType
 
 /**
  * A singleton Object that will create a list of AvailableGame, representing a response
