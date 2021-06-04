@@ -25,6 +25,8 @@ Modularization allows us to work on features in isolation - public api, implemen
 providing therefore faster builds.
 
 Some talks that helped me out: https://www.droidcon.com/media-detail?video=380843878 ,  https://www.youtube.com/watch?v=TWLkswxjSr0&t=916s
+
+**Artifact:** [apk](https://github.com/brunohensel/card-game/blob/master/result/app-debug.apk)
   
 <h2>2. Stacks</h2>
 - Project written 100% in kotlin
@@ -34,5 +36,11 @@ Some talks that helped me out: https://www.droidcon.com/media-detail?video=38084
 - As a reactive paradigm kotlin flow was used, where the flows are converted into a StateFlow that helps us by not emitting the same state twice in a row.
 For single shot events, a channel was used.
 
+- Dependency injecting was made by using Dagger 2.
+
 - Tests: For testing the units I made a lot of use of interfaces to be able to build fake implementations where it made sense, in order to test state and 
-not just behavior .
+not just behavior.
+
+<h2>3. Screenshots</h2>
+
+<img width= "200" src="https://github.com/brunohensel/card-game/blob/master/result/home.png"></img> <img width= "200" src="https://github.com/brunohensel/card-game/blob/master/result/playing.png"></img> <img width= "200" src="https://github.com/brunohensel/card-game/blob/master/result/history.png"></img> <img width= "200" src="https://github.com/brunohensel/card-game/blob/master/result/rules.png"></img>
