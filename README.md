@@ -29,16 +29,10 @@ Some talks that helped me out: https://www.droidcon.com/media-detail?video=38084
 <h2>2. Stacks</h2>
 - Project written 100% in kotlin
 
-- I followed a MVVM pattern with state managment, where I tried to keep a unidiractional flow between the layers.
+- I followed a MVVM pattern with state management, where I tried to keep a unidirectional flow between the layers.
 
-- As a rective paradigm kotlin flow was used, where the flows are converted into a StateFlow that helps us by not emiting the same state twice in a row.
+- As a reactive paradigm kotlin flow was used, where the flows are converted into a StateFlow that helps us by not emitting the same state twice in a row.
 For single shot events, a channel was used.
 
 - Tests: For testing the units I made a lot of use of interfaces to be able to build fake implementations where it made sense, in order to test state and 
 not just behavior.
-
-
-
-
-
-
