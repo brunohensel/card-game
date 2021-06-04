@@ -9,6 +9,17 @@ object WarOfSuitsDeckCard {
 
     var cards = mutableListOf<Card>()
 
+    /**
+     * Chose the for loop approach instead of the functional approach with for each because, for
+     * this use case, it seemed to perform better. A naive measurement has shown for this particular
+     * case that the for loop is about 4x faster.
+     *
+     *   measureNanoTime {
+     *          for (suit in Suits.values())
+     *             for (rank in Ranks.values())
+     *                cards.add(Card(rank, suit, cardMapper(suit, rank)))
+     *         }.also { println("BANCHMARK FOR LOOP: $it in nano") }
+     */
     init {
         for (suit in Suits.values())
             for (rank in Ranks.values())
