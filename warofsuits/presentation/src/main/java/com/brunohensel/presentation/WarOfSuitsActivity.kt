@@ -68,7 +68,7 @@ class WarOfSuitsActivity : AppCompatActivity() {
 
     private fun setDefaultValuesForNewGame() {
         isEndTheGame = false
-        binding.btnPlayRound.text = "PlAY ROUND"
+        binding.btnPlayRound.text = getString(R.string.play_round)
     }
 
     private fun processSingleEvent(singleEvent: WarOfSuitsSingleEvents) {
@@ -109,9 +109,9 @@ class WarOfSuitsActivity : AppCompatActivity() {
 
     private fun showFinishedRound(hand: Hand?) {
         hand?.run {
-            binding.btnPlayRound.text = "Play again"
+            binding.btnPlayRound.text = getString(R.string.play_again)
             isEndTheGame = true
-            binding.txtGameWinner.text = winner ?: "The game has tied"
+            binding.txtGameWinner.text = winner ?: getString(R.string.game_tied)
         }
     }
 

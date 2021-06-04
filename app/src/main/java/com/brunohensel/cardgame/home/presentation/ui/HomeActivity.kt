@@ -7,6 +7,7 @@ import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.isVisible
 import androidx.lifecycle.ViewModelProvider
+import com.brunohensel.cardgame.R
 import com.brunohensel.cardgame.application.component
 import com.brunohensel.cardgame.databinding.ActivityHomeBinding
 import com.brunohensel.cardgame.home.domain.module.GameType
@@ -55,8 +56,8 @@ class HomeActivity : AppCompatActivity() {
     private fun onClick(gameType: GameType) {
         when (gameType) {
             GameType.WAR_OF_SUITS -> startActivity(Intent(this, WarOfSuitsActivity::class.java))
-            GameType.POKER -> Toast.makeText(this, "Open Poker", Toast.LENGTH_SHORT).show()
-            GameType.BLACKJACK -> Toast.makeText(this, "Open Blackjack", Toast.LENGTH_SHORT).show()
+            GameType.POKER -> Toast.makeText(this, getString(R.string.coming_soon), Toast.LENGTH_SHORT).show()
+            GameType.BLACKJACK -> Toast.makeText(this, getString(R.string.coming_soon), Toast.LENGTH_SHORT).show()
         }
     }
 }

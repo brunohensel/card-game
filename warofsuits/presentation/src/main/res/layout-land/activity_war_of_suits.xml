@@ -28,7 +28,7 @@
         android:id="@+id/textView"
         style="@style/HeadlineText"
         android:layout_marginTop="@dimen/margin_16"
-        android:text="War of Suits"
+        android:text="@string/game_war_of_suits_title"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -56,7 +56,7 @@
     <TextView
         android:id="@+id/txtPlayerOneScoreTitle"
         style="@style/BodyText"
-        android:text="Score: "
+        android:text="@string/score"
         android:layout_marginStart="@dimen/margin_8"
         app:layout_constraintEnd_toStartOf="@+id/txtPlayerOneScore"
         app:layout_constraintHorizontal_bias="0.5"
@@ -84,7 +84,7 @@
     <TextView
         android:id="@+id/txtPlayerTwoScoreTitle"
         style="@style/BodyText"
-        android:text="Score: "
+        android:text="@string/score"
         android:layout_marginStart="@dimen/margin_8"
         app:layout_constraintEnd_toStartOf="@+id/txtPlayerTwoScore"
         app:layout_constraintHorizontal_bias="0.5"
@@ -124,7 +124,7 @@
         style="@style/BodyText"
         android:layout_marginStart="@dimen/margin_16"
         android:layout_marginTop="@dimen/margin_16"
-        android:text="Winner: "
+        android:text="@string/winner_title"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView" />
 
@@ -138,7 +138,7 @@
     <TextView
         android:id="@+id/txtGameWinnerTitle"
         style="@style/BodyText"
-        android:text="Game Winner: "
+        android:text="@string/game_winner_title"
         app:layout_constraintStart_toStartOf="@+id/txtRoundWinnerTitle"
         app:layout_constraintTop_toBottomOf="@+id/txtRoundWinnerTitle" />
 
@@ -152,7 +152,7 @@
     <TextView
         android:id="@+id/txtRemainingRoundsTitle"
         style="@style/BodyText"
-        android:text="Remaining rounds: "
+        android:text="@string/remaining_rounds_title"
         app:layout_constraintStart_toStartOf="@+id/txtRoundWinnerTitle"
         app:layout_constraintTop_toBottomOf="@+id/txtGameWinnerTitle" />
 
@@ -175,7 +175,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:backgroundTint="@color/colorPrimaryDark"
-        android:text="Play Round"
+        android:text="@string/play_round"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
@@ -187,7 +187,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:backgroundTint="@color/colorPrimaryDark"
-        android:text="Rules"
+        android:text="@string/rules"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/btnPlayRound"
         app:layout_constraintHorizontal_bias="0.5"
@@ -199,7 +199,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:backgroundTint="@color/colorPrimaryDark"
-        android:text="History"
+        android:text="@string/history"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/btnShowRules"
         app:layout_constraintHorizontal_bias="0.5"

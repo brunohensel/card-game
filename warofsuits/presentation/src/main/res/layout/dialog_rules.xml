@@ -11,7 +11,7 @@
         style="@style/HeadlineText"
         android:layout_margin="@dimen/margin_8"
         android:drawableStart="@drawable/ic_close"
-        android:text="Rules"
+        android:text="@string/rules"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:ignore="UseCompatTextViewDrawableXml" />
@@ -27,8 +27,7 @@
         android:paddingStart="@dimen/margin_8"
         android:paddingEnd="@dimen/margin_8"
         android:scrollbars="vertical"
-        android:text="1 - There are two players. Each player has a pile of cards to play, and a discard pile. \n\n 2 - The set must be shuffled at the beginning of each game.\n\n 3 - The whole set must be split into two piles of equal size, each one must be given to each
-player. \n\n 4 - Players have access to (and can only play) the top card of their regular pile. \n\n5 - In each round, both players lay down a card. The one holding the highest value card wins the round, and puts both cards into their discard pile. \n\n6 - In case that both cards have equal value, the winner card is decided based on their suits (clubs, diamonds. hearts or spades). - The suit priority must be defined at random, at the start of each game. \n\n7 - Aces are high (values are, from lowest to highest: 2..10, J, Q, K, A). \n\n8 - The game finishes when both players have played all of their cards. \n\n9 - The user with more cards in their discard pile wins the game."
+        android:text="@string/rules_info"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="@id/txtDialogRulesTitle"
@@ -40,7 +39,7 @@ player. \n\n 4 - Players have access to (and can only play) the top card of thei
         style="@style/HeadlineText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Suits for this game"
+        android:text="@string/suits_game"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/txtDialogRulesTitle" />

@@ -4,4 +4,5 @@
     <dimen name="card_size">130dp</dimen>
     <dimen name="margin_32">32dp</dimen>
     <dimen name="margin_8">8dp</dimen>
+    <dimen name="dimens_12">12dp</dimen>
 </resources>

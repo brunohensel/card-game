@@ -8,7 +8,7 @@
 
     <androidx.cardview.widget.CardView
         android:id="@+id/cvHistory"
-        android:layout_margin="8dp"
+        android:layout_margin="@dimen/margin_8"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
@@ -20,36 +20,36 @@
             <TextView
                 android:id="@+id/txt_historyWinnerName"
                 style="@style/BodyText"
-                android:layout_marginStart="8dp"
+                android:layout_marginStart="@dimen/margin_8"
                 app:layout_constraintBottom_toTopOf="@+id/txtHistoryLoserName"
                 app:layout_constraintEnd_toStartOf="@+id/txtHistoryPlayerWinnerStatus"
                 app:layout_constraintHorizontal_bias="0.5"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="@+id/imgCardPlayerOne"
+                app:layout_constraintTop_toTopOf="@id/imgCardPlayerOne"
                 tools:text="Player One" />
 
             <TextView
                 android:id="@+id/txtHistoryPlayerWinnerStatus"
                 style="@style/BodyText"
                 android:textColor="@color/colorGreen"
-                android:layout_marginStart="8dp"
-                app:layout_constraintBottom_toBottomOf="@+id/txt_historyWinnerName"
+                android:layout_marginStart="@dimen/margin_8"
+                app:layout_constraintBottom_toBottomOf="@id/txt_historyWinnerName"
                 app:layout_constraintEnd_toStartOf="@+id/imgCardPlayerOne"
                 app:layout_constraintHorizontal_bias="0.5"
-                app:layout_constraintStart_toEndOf="@+id/txt_historyWinnerName"
-                app:layout_constraintTop_toTopOf="@+id/txt_historyWinnerName"
-                android:text="Winner" />
+                app:layout_constraintStart_toEndOf="@id/txt_historyWinnerName"
+                app:layout_constraintTop_toTopOf="@id/txt_historyWinnerName"
+                android:text="@string/winner" />
 
             <ImageView
                 android:id="@+id/imgCardPlayerOne"
                 android:layout_width="70dp"
                 android:layout_height="70dp"
-                android:layout_marginTop="8dp"
-                android:layout_marginBottom="8dp"
+                android:layout_marginTop="@dimen/margin_8"
+                android:layout_marginBottom="@dimen/margin_8"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toStartOf="@+id/imgCardPlayerTwo"
+                app:layout_constraintEnd_toStartOf="@id/imgCardPlayerTwo"
                 app:layout_constraintHorizontal_bias="0.5"
-                app:layout_constraintStart_toEndOf="@+id/txtHistoryPlayerWinnerStatus"
+                app:layout_constraintStart_toEndOf="@id/txtHistoryPlayerWinnerStatus"
                 app:layout_constraintTop_toTopOf="parent"
                 tools:src="@drawable/ic_hearts_king" />
 
@@ -60,26 +60,26 @@
                 app:layout_constraintBottom_toBottomOf="@+id/imgCardPlayerOne"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.5"
-                app:layout_constraintStart_toEndOf="@+id/imgCardPlayerOne"
-                app:layout_constraintTop_toTopOf="@+id/imgCardPlayerOne"
+                app:layout_constraintStart_toEndOf="@id/imgCardPlayerOne"
+                app:layout_constraintTop_toTopOf="@id/imgCardPlayerOne"
                 tools:src="@drawable/ic_diamonds_2" />
 
             <TextView
                 android:id="@+id/txtHistoryLoserName"
                 style="@style/BodyText"
-                app:layout_constraintBottom_toBottomOf="@+id/imgCardPlayerOne"
-                app:layout_constraintStart_toStartOf="@+id/txt_historyWinnerName"
-                app:layout_constraintTop_toBottomOf="@+id/txt_historyWinnerName"
+                app:layout_constraintBottom_toBottomOf="@id/imgCardPlayerOne"
+                app:layout_constraintStart_toStartOf="@id/txt_historyWinnerName"
+                app:layout_constraintTop_toBottomOf="@id/txt_historyWinnerName"
                 tools:text="Player One" />
 
             <TextView
                 android:id="@+id/txtHistoryPlayerLoserStatus"
                 style="@style/BodyText"
                 android:textColor="@color/colorRed"
-                app:layout_constraintBottom_toBottomOf="@+id/txtHistoryLoserName"
-                app:layout_constraintStart_toStartOf="@+id/txtHistoryPlayerWinnerStatus"
-                app:layout_constraintTop_toTopOf="@+id/txtHistoryLoserName"
-                android:text="Loser" />
+                app:layout_constraintBottom_toBottomOf="@id/txtHistoryLoserName"
+                app:layout_constraintStart_toStartOf="@id/txtHistoryPlayerWinnerStatus"
+                app:layout_constraintTop_toTopOf="@id/txtHistoryLoserName"
+                android:text="@string/loser" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.cardview.widget.CardView>

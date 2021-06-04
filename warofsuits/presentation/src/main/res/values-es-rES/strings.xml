@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="play_round" translatable="false">JUGAR RONDA</string>
+    <string name="play_again" translatable="false">JUGAR DE NUEVO</string>
+    <string name="game_tied" translatable="false">El partido se empató</string>
+    <string name="winner_title" translatable="false">Ganador:</string>
+    <string name="game_winner_title" translatable="false">Ganador del juego:</string>
+    <string name="remaining_rounds_title" translatable="false">Rondas restantes:</string>
+    <string name="rules" translatable="false">Reglas</string>
+    <string name="history" translatable="false">Historia</string>
+    <string name="score" translatable="false">Score:</string>
+    <string name="game_war_of_suits_title" translatable="false">War of Suits</string>
+    <string name="history_empty_msg" translatable="false">Por el momento no hay puntos\n en la historia.</string>
+    <string name="suits_game" translatable="false">Suits para este juego</string>
+    <string name="rules_info" translatable="false">1 - Hay dos jugadores. Cada jugador tiene una pila de cartas para jugar, y una pila de descarte. \n\n 2 - El set debe ser barajado al principio de cada partida.\n\n 3 - El conjunto debe dividirse en dos montones de igual tamaño, cada uno de los cuales debe ser entregado a cada jugador. \n\n 4 - Los jugadores tienen acceso (y sólo pueden jugar) la carta superior de su pila normal. \n\n5 - En cada ronda, ambos jugadores dejan una carta. El que tenga la carta de mayor valor gana la ronda, y pone ambas cartas en su pila de descarte. \n\n6 - En caso de que ambas cartas tengan el mismo valor, la carta ganadora se decide en función de sus palos (tréboles, diamantes, corazones o picas). - La prioridad de los palos debe definirse al azar, al comienzo de cada partida. \n\n7 - Los ases son altos (los valores son, de menor a mayor: 2..10, J, Q, K, A). \n\n8 - El juego termina cuando ambos jugadores han jugado todas sus cartas. \n\n9 - El usuario con más cartas en su pila de descarte gana la partida.</string>
+    <string name="loser" translatable="false">Perdedor</string>
+    <string name="winner" translatable="false">Ganador</string>
+</resources>

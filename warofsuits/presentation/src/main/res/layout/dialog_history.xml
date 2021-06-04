@@ -11,9 +11,9 @@
     <TextView
         android:id="@+id/txtDialogTitle"
         style="@style/HeadlineText"
-        android:layout_margin="8dp"
+        android:layout_margin="@dimen/margin_8"
         android:drawableStart="@drawable/ic_close"
-        android:text="History"
+        android:text="@string/history"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:ignore="UseCompatTextViewDrawableXml" />
@@ -22,13 +22,13 @@
         android:id="@+id/rvDialogHistory"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_margin="8dp"
-        android:paddingBottom="12dp"
+        android:layout_margin="@dimen/margin_8"
+        android:paddingBottom="@dimen/dimens_12"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtDialogTitle" />
+        app:layout_constraintTop_toBottomOf="@id/txtDialogTitle" />
 
     <ImageView
         android:id="@+id/imgEmptyState"
@@ -47,10 +47,10 @@
         style="@style/BodyText"
         android:layout_width="wrap_content"
         android:layout_gravity="center_horizontal|center_vertical"
-        android:layout_margin="16dp"
-        android:text="At the moment there are no items\nin the history."
+        android:layout_margin="@dimen/margin_16"
+        android:text="@string/history_empty_msg"
         android:visibility="gone"
-        app:layout_constraintEnd_toEndOf="@+id/imgEmptyState"
-        app:layout_constraintStart_toStartOf="@+id/imgEmptyState"
-        app:layout_constraintTop_toBottomOf="@+id/imgEmptyState" />
+        app:layout_constraintEnd_toEndOf="@id/imgEmptyState"
+        app:layout_constraintStart_toStartOf="@id/imgEmptyState"
+        app:layout_constraintTop_toBottomOf="@id/imgEmptyState" />
 </androidx.constraintlayout.widget.ConstraintLayout>

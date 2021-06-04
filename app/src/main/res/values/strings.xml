@@ -1,4 +1,5 @@
 <resources>
   <string name="app_name">Card Game</string>
-    <string name="home_title">Choose your favorite game to play</string>
+    <string name="home_title" translatable="false">Choose your favorite game to play</string>
+    <string name="coming_soon" translatable="false">Coming soon</string>
 </resources>
