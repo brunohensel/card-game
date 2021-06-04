@@ -1,5 +1,6 @@
 package com.brunohensel.presentation.dialogs
 
+import android.content.pm.ActivityInfo
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -41,6 +42,19 @@ class HistoryDialog(private val list: List<Hand>) : DialogFragment() {
             imgEmptyState.isVisible = list.isEmpty()
         }
         historyAdapter.submitList(list)
+    }
+
+    //Prevent the rotation when the dialog fragment is shown
+    override fun onResume() {
+        super.onResume()
+        //lock screen to portrait
+        requireActivity().requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_PORTRAIT
+    }
+
+    override fun onPause() {
+        super.onPause()
+        //set rotation to sensor dependent
+        requireActivity().requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_FULL_SENSOR
     }
 
     override fun onDestroyView() {

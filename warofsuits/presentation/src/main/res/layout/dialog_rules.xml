@@ -9,7 +9,7 @@
     <TextView
         android:id="@+id/txtDialogRulesTitle"
         style="@style/HeadlineText"
-        android:layout_margin="8dp"
+        android:layout_margin="@dimen/margin_8"
         android:drawableStart="@drawable/ic_close"
         android:text="Rules"
         app:layout_constraintStart_toStartOf="parent"
@@ -19,35 +19,47 @@
     <TextView
         android:id="@+id/txtRules"
         style="@style/BodyText"
-        android:layout_marginEnd="16dp"
         android:layout_width="0dp"
-        android:layout_marginTop="8dp"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
+        android:layout_marginBottom="@dimen/margin_16"
+        android:layout_marginTop="@dimen/margin_16"
+        android:layout_marginEnd="@dimen/margin_16"
+        android:paddingStart="@dimen/margin_8"
+        android:paddingEnd="@dimen/margin_8"
+        android:scrollbars="vertical"
         android:text="1 - There are two players. Each player has a pile of cards to play, and a discard pile. \n\n 2 - The set must be shuffled at the beginning of each game.\n\n 3 - The whole set must be split into two piles of equal size, each one must be given to each
 player. \n\n 4 - Players have access to (and can only play) the top card of their regular pile. \n\n5 - In each round, both players lay down a card. The one holding the highest value card wins the round, and puts both cards into their discard pile. \n\n6 - In case that both cards have equal value, the winner card is decided based on their suits (clubs, diamonds. hearts or spades). - The suit priority must be defined at random, at the start of each game. \n\n7 - Aces are high (values are, from lowest to highest: 2..10, J, Q, K, A). \n\n8 - The game finishes when both players have played all of their cards. \n\n9 - The user with more cards in their discard pile wins the game."
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/txtDialogRulesTitle"
-        app:layout_constraintTop_toBottomOf="@+id/txtDialogRulesTitle" />
+        app:layout_constraintStart_toStartOf="@id/txtDialogRulesTitle"
+        app:layout_constraintTop_toBottomOf="@id/txtSuitsPriority" />
 
 
     <TextView
         android:id="@+id/txtSuitsPriorityTitlte"
+        style="@style/HeadlineText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        style="@style/HeadlineText"
-        android:layout_marginTop="8dp"
+        android:text="Suits for this game"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtRules"
-        android:text="Suits for this game" />
+        app:layout_constraintTop_toBottomOf="@id/txtDialogRulesTitle" />
 
     <TextView
         android:id="@+id/txtSuitsPriority"
         style="@style/BodyText"
         app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="@dimen/margin_8"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtSuitsPriorityTitlte"
+        app:layout_constraintTop_toBottomOf="@id/txtSuitsPriorityTitlte"
         tools:text="clubs, diamonds. hearts or spades" />
+
+    <View
+        android:layout_width="0dp"
+        android:layout_height="2dp"
+        android:background="@color/onPrimary"
+        app:layout_constraintEnd_toEndOf="@id/txtSuitsPriority"
+        app:layout_constraintStart_toStartOf="@id/txtSuitsPriority"
+        app:layout_constraintTop_toBottomOf="@id/txtSuitsPriority" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

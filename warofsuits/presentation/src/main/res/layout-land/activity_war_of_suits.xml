@@ -36,11 +36,10 @@
     <TextView
         android:id="@+id/txtPlayerOneName"
         style="@style/BodyText"
-        app:layout_constraintBottom_toTopOf="@+id/txtPlayerOneScoreTitle"
-        app:layout_constraintEnd_toStartOf="@+id/imgCardPlayerOne"
+        app:layout_constraintBottom_toTopOf="@+id/imgCardPlayerOne"
+        app:layout_constraintEnd_toStartOf="@+id/txtPlayerOneScoreTitle"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/imgCardPlayerOne"
+        app:layout_constraintStart_toStartOf="@+id/imgCardPlayerOne"
         tools:text="Player One" />
 
     <ImageView
@@ -48,24 +47,27 @@
         android:layout_width="@dimen/card_size"
         android:layout_height="@dimen/card_size"
         android:src="@drawable/ic_card__regular_back"
-        app:layout_constraintBottom_toTopOf="@+id/imgCardPlayerTwo"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/view"
+        app:layout_constraintEnd_toStartOf="@+id/imgCardPlayerTwo"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/txtPlayerOneName"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txtRemainingRounds" />
 
     <TextView
         android:id="@+id/txtPlayerOneScoreTitle"
         style="@style/BodyText"
         android:text="Score: "
-        app:layout_constraintBottom_toBottomOf="@+id/imgCardPlayerOne"
-        app:layout_constraintStart_toStartOf="@+id/txtPlayerOneName"
-        app:layout_constraintTop_toBottomOf="@+id/txtPlayerOneName" />
+        android:layout_marginStart="@dimen/margin_8"
+        app:layout_constraintEnd_toStartOf="@+id/txtPlayerOneScore"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/txtPlayerOneName"
+        app:layout_constraintTop_toTopOf="@+id/txtPlayerOneName" />
 
     <TextView
         android:id="@+id/txtPlayerOneScore"
         style="@style/BodyText"
-        app:layout_constraintBottom_toBottomOf="@+id/txtPlayerOneScoreTitle"
+        app:layout_constraintEnd_toEndOf="@+id/imgCardPlayerOne"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/txtPlayerOneScoreTitle"
         app:layout_constraintTop_toTopOf="@+id/txtPlayerOneScoreTitle"
         tools:text="30" />
@@ -73,25 +75,28 @@
     <TextView
         android:id="@+id/txtPlayerTwoName"
         style="@style/BodyText"
-        app:layout_constraintBottom_toTopOf="@+id/txtPlayerTwoScoreTitle"
-        app:layout_constraintEnd_toStartOf="@+id/imgCardPlayerTwo"
+        app:layout_constraintBottom_toTopOf="@+id/imgCardPlayerTwo"
+        app:layout_constraintEnd_toStartOf="@+id/txtPlayerTwoScoreTitle"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/imgCardPlayerTwo"
+        app:layout_constraintStart_toStartOf="@+id/imgCardPlayerTwo"
         tools:text="Player Two" />
 
     <TextView
         android:id="@+id/txtPlayerTwoScoreTitle"
         style="@style/BodyText"
         android:text="Score: "
-        app:layout_constraintBottom_toBottomOf="@+id/imgCardPlayerTwo"
-        app:layout_constraintStart_toStartOf="@+id/txtPlayerTwoName"
-        app:layout_constraintTop_toBottomOf="@+id/txtPlayerTwoName" />
+        android:layout_marginStart="@dimen/margin_8"
+        app:layout_constraintEnd_toStartOf="@+id/txtPlayerTwoScore"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/txtPlayerTwoName"
+        app:layout_constraintTop_toTopOf="@+id/txtPlayerTwoName" />
 
     <TextView
         android:id="@+id/txtPlayerTwoScore"
         style="@style/BodyText"
         app:layout_constraintBottom_toBottomOf="@+id/txtPlayerTwoScoreTitle"
+        app:layout_constraintEnd_toEndOf="@+id/imgCardPlayerTwo"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/txtPlayerTwoScoreTitle"
         app:layout_constraintTop_toTopOf="@+id/txtPlayerTwoScoreTitle"
         tools:text="30" />
@@ -100,12 +105,12 @@
         android:id="@+id/imgCardPlayerTwo"
         android:layout_width="@dimen/card_size"
         android:layout_height="@dimen/card_size"
-        app:layout_constraintBottom_toTopOf="@+id/view"
+        android:src="@drawable/ic_card__regular_back"
+        app:layout_constraintBottom_toBottomOf="@+id/imgCardPlayerOne"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/txtPlayerTwoName"
-        app:layout_constraintTop_toBottomOf="@+id/imgCardPlayerOne"
-        android:src="@drawable/ic_card__regular_back" />
+        app:layout_constraintStart_toEndOf="@+id/imgCardPlayerOne"
+        app:layout_constraintTop_toTopOf="@+id/imgCardPlayerOne" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline"
@@ -117,8 +122,8 @@
     <TextView
         android:id="@+id/txtRoundWinnerTitle"
         style="@style/BodyText"
-        android:layout_marginTop="@dimen/margin_32"
-        android:layout_marginStart="@dimen/margin_32"
+        android:layout_marginStart="@dimen/margin_16"
+        android:layout_marginTop="@dimen/margin_16"
         android:text="Winner: "
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView" />

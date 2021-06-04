@@ -28,7 +28,7 @@ class HomeAdapter(private val onClick: (GameType) -> Unit) :
             with(binding) {
                 imgGameIcon.setOnClickListener { onClick(data.type) }
                 txtGameName.text = data.name
-                imgGameIcon.alpha = if (data.available) 1f else 0.5f
+                imgGameIcon.alpha = if (data.available) 1f else 0.3f
                 imgGameIcon.setImageResource( data.icon)
             }
         }

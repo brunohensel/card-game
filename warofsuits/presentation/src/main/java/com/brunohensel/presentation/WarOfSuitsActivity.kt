@@ -83,16 +83,14 @@ class WarOfSuitsActivity : AppCompatActivity() {
     }
 
     private fun showHistoryDialog(history: List<Hand>) {
-        val dialog = HistoryDialog(history)
-        dialog.show(supportFragmentManager, "Dialog")
+        HistoryDialog(history).show(supportFragmentManager, "Dialog")
     }
 
     private fun renderState(state: WarOfSuitsState) {
         when (state.syncState) {
             Finish -> showFinishedRound(state.hand)
-            Idle -> {
-            }
-            Round -> showRoundInfo(state.rounds, state.hand)
+            Idle -> { }
+            Round -> showRoundInfo(state.rounds, state.hand, state.players)
             Started -> setPlayersConfig(state.players)
             Restarted -> handleRestartState()
         }
@@ -126,7 +124,7 @@ class WarOfSuitsActivity : AppCompatActivity() {
         }
     }
 
-    private fun showRoundInfo(rounds: Int, hand: Hand?) {
+    private fun showRoundInfo(rounds: Int, hand: Hand?, players: Pair<Player, Player>?) {
         with(binding) {
             hand?.run {
                 txtRemainingRounds.text = rounds.toString()
@@ -135,6 +133,10 @@ class WarOfSuitsActivity : AppCompatActivity() {
                 imgCardPlayerOne.setImageDrawable(getDrawableFromRes(playedHands.first.front))
                 imgCardPlayerTwo.setImageDrawable(getDrawableFromRes(playedHands.second.front))
                 txtRoundWinner.text = winner
+            }
+            players?.run {
+                txtPlayerOneName.text = first.name
+                txtPlayerTwoName.text = second.name
             }
         }
     }

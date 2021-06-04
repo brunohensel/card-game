@@ -1,6 +1,8 @@
 package com.brunohensel.presentation.dialogs
 
+import android.content.pm.ActivityInfo
 import android.os.Bundle
+import android.text.method.ScrollingMovementMethod
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -8,6 +10,7 @@ import androidx.fragment.app.DialogFragment
 import com.brunohensel.core.cardtypes.warofsuits.Suits
 import com.brunohensel.presentation.R
 import com.brunohensel.presentation.databinding.DialogRulesBinding
+
 
 class RulesDialog(private val suits: List<Suits>) : DialogFragment() {
 
@@ -41,8 +44,22 @@ class RulesDialog(private val suits: List<Suits>) : DialogFragment() {
 
         binding?.run {
             txtDialogRulesTitle.setOnClickListener { dismiss() }
+            txtRules.movementMethod = ScrollingMovementMethod()
             txtSuitsPriority.text = strBuilder.toString()
         }
+    }
+
+    //Prevent the rotation when the dialog fragment is shown
+    override fun onResume() {
+        super.onResume()
+        //lock screen to portrait
+        requireActivity().requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_PORTRAIT
+    }
+
+    override fun onPause() {
+        super.onPause()
+        //set rotation to sensor dependent
+        requireActivity().requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_FULL_SENSOR
     }
 
     override fun onDestroyView() {

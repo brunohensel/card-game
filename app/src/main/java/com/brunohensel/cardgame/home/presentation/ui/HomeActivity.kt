@@ -35,7 +35,7 @@ class HomeActivity : AppCompatActivity() {
         viewModel
             .state
             .onEach { state -> renderState(state) }
-            .collectIn(this@HomeActivity)
+            .collectIn(this)
 
         with(binding) {
             rvAvailableGames.apply {
@@ -45,18 +45,10 @@ class HomeActivity : AppCompatActivity() {
     }
 
     private fun renderState(state: HomeState) {
-        handleLoadingAnimation(state.isLoading)
         when (state.syncState) {
             HomeSyncState.Content -> homeAdapter.submitList(state.availableGames)
             HomeSyncState.Idle -> { /* no action is needed */ }
             HomeSyncState.Message -> { /* handle error state */ }
-        }
-    }
-
-    private fun handleLoadingAnimation(shouldShow: Boolean) {
-        with(binding.lottieLoading) {
-            isVisible = shouldShow
-            if (shouldShow) playAnimation() else cancelAnimation()
         }
     }
 

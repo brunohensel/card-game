@@ -9,6 +9,5 @@ import com.brunohensel.cardgame.home.domain.module.AvailableGame
 data class HomeState(
     val availableGames: List<AvailableGame> = emptyList(),
     val failure: Throwable? = null,
-    val isLoading: Boolean = false,
     val syncState: HomeSyncState = HomeSyncState.Idle
 )

@@ -36,5 +36,5 @@ class HomeViewModel @Inject constructor(
             is Either.Left  -> emit(HomeState(failure = result.value, syncState = Message))
             is Either.Right -> emit(HomeState(availableGames = result.value, syncState = Content))
         }
-    }.onStart { emit(HomeState(isLoading = true)) }
+    }
 }
